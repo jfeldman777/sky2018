@@ -3,7 +3,12 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
+from .models import NewsRecord
 from django.contrib.auth.models import User
+
+from collections import Counter
+from operator import itemgetter
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def msg(request,msg):
@@ -35,6 +40,23 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 def index(request):
+    news = NewsRecord.objects.all()[:1].get()
     return render(request,'index.html',
-        {
+        {'news':news
         })
+
+def news(request):
+    x_list = NewsRecord.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(x_list, 10)
+    try:
+        qs = paginator.page(page)
+    except PageNotAnInteger:
+        qs = paginator.page(1)
+    except EmptyPage:
+        qs = paginator.page(paginator.num_pages)
+
+    return render(request,'news.html',
+            {'qs':qs,
+            })

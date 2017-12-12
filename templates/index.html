@@ -19,5 +19,7 @@
   <h3>{{news.title}}</h3>
   {{news.description}}<br>
   <small>{{news.updated_at}}</small>
+  <br>
+  <img src="{{MEDIA_URL}}{{news.figure}}"/>
 {% endif %}
 {% endblock %}
