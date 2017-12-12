@@ -17,9 +17,19 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import re_path
 from django.conf.urls import include
+from machina.app import board
+
 from sky import views as core_views
 
-urlpatterns = [
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = []
+
+if settings.DEBUG:#в этом режиме медиафайлы берутся из статической папки MEDIA
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
     path('admin/', admin.site.urls),
 ]
 
@@ -28,6 +38,9 @@ urlpatterns += [
     re_path('^password_change/done/$', core_views.password_change_done,
         name='password_change_done'),
     re_path('^reset/done/$', core_views.password_reset_done, name='password_reset_done'),
+
+    re_path('^forum/', include(board.urls)),
+
     re_path('^', include('django.contrib.auth.urls')),
     re_path('^', include('sky.urls')),
 ]
