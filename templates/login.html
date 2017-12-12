@@ -1,0 +1,32 @@
+{% load i18n %}
+{% if form.errors %}
+<p>
+  {% trans "Your username and password didn't match. Please try again." %}
+
+</p>
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+  {% trans 'Register or Log in' %}<br>
+{% csrf_token %}
+{{ form.username.label_tag }}
+    {{ form.username }}
+    {{ form.password.label_tag }}
+    {{ form.password }}
+            <button
+      <button type="submit" class="btn btn-primary">
+        {% trans 'Log in' %}
+
+      <span class="glyphicon glyphicon-log-in">
+
+        </span>
+</button>
+      <input type="hidden" name="next" value="{{ next }}" />
+<a href="signup/" class="btn btn-success"><span class="glyphicon glyphicon-check"></span>
+  {% trans 'Sign Up' %}
+
+ </a>
+<a href="password_reset/" class="btn btn-warning"><span class="glyphicon glyphicon-adjust"></span>
+{% trans 'Restore Password' %}
+   </a>
+</form>

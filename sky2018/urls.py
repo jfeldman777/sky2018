@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import re_path
+from django.conf.urls import include
+from sky import views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+]
+
+urlpatterns += [
+    re_path('^signup/$', core_views.signup, name='signup'),
+    re_path('^password_change/done/$', core_views.password_change_done,
+        name='password_change_done'),
+    re_path('^reset/done/$', core_views.password_reset_done, name='password_reset_done'),
+    re_path('^', include('django.contrib.auth.urls')),
+    re_path('^', include('sky.urls')),
 ]

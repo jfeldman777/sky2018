@@ -1,0 +1,23 @@
+{% extends "base1.html" %}
+{% load i18n %}
+
+{% block content %}
+<h3><a href="http://hbtjournal.com/club/new.html" target="help">
+{% trans 'for new visitors' %}
+</a></h3>
+<h1>{% trans 'Welcome' %}!</h1>
+
+
+{% if user.is_anonymous %}
+    {% trans 'This is Feldman-Club site' %}.<p>
+{% trans 'Do you know what TUAI is?'%}
+{% trans 'Show your knowledge and get certified!' %}</p>
+    {% trans 'To get all information please Log-In or Sign-Up.' %}
+{% else %}
+<hr>
+  <h2>{% trans 'News' %}</h2>
+  <h3>{{news.title}}</h3>
+  {{news.description}}<br>
+  <small>{{news.updated_at}}</small>
+{% endif %}
+{% endblock %}
