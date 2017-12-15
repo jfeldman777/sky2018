@@ -48,21 +48,6 @@
           {% trans 'Home' %}
         </a>
       </li>
-          <li class="nav-item">
-          <a class="nav-link"
-          href="http://hbtjournal.com/club/"
-          target="theory">
-            {% trans 'Theory' %}
-          </a>
-        </li>
-
-        <li class="nav-item">
-        <a class="nav-link"
-        href="http://hbtjournal.com/club/help.html"
-        target="theory">
-        <b>  {% trans 'Help' %}</b>
-        </a>
-      </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/news/" >
@@ -86,7 +71,7 @@
             {% trans 'Topic Search' %}
           </a>
         </li>
-  {% if not user.is_anonymous %}        
+  {% if not user.is_anonymous %}
 {% endif %}
       </ul>
 
