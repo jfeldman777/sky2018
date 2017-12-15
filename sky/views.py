@@ -3,14 +3,59 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
-from .models import NewsRecord
+from .models import NewsRecord, MagicNode
 from django.contrib.auth.models import User
 
 from collections import Counter
 from operator import itemgetter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from .forms import NameForm
 # Create your views here.
+def topic_tree(request,id):
+    get = lambda node_id: MagicNode.objects.get(pk=node_id)
+    children = []
+    siblings = []
+    try:
+        try:
+            node = get(id)
+        except:
+            node = MagicNode.get_first_root_node()
+
+        if node.is_root():
+            node = node.get_first_child()
+
+        children = node.get_children()
+        parent = node.get_parent()
+        siblings = node.get_siblings()
+    except:
+        pass
+    return render(request,'topic_tree.html',
+                    {'node':node,
+                     'children':children,
+                     'parent':parent,
+                     'siblings':siblings,
+                     })
+
+def topic_search(request):
+    result = None
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = NameForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            result = MagicNode.objects.filter(desc__icontains=name)
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = NameForm()
+
+    return render(request, 'topic_search.html',
+        {'form': form,
+         'result': result,
+        })
+
 def msg(request,msg):
     return render(request, 'msg.html', {'msg': msg})
 
