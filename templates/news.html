@@ -9,7 +9,9 @@
   {{news.description}}<br>
   <small>{{news.updated_at}}</small>
   <br>
+  {% if news.figure %}
   <img src="{{news.figure.url}}"/>
+  {% endif %}
   {% endfor %}
 
   {% if qs.has_other_pages %}
