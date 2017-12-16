@@ -14,8 +14,6 @@ from .forms import NameForm
 # Create your views here.
 def topic_tree(request,id):
     get = lambda node_id: MagicNode.objects.get(pk=node_id)
-    children = []
-    siblings = []
     try:
         try:
             node = get(id)
@@ -29,7 +27,10 @@ def topic_tree(request,id):
         parent = node.get_parent()
         siblings = node.get_siblings()
     except:
-        pass
+        children = []
+        siblings = []
+        parent = None
+        node = None
     return render(request,'topic_tree.html',
                     {'node':node,
                      'children':children,
