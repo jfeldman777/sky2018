@@ -15,6 +15,8 @@
   {{news.description}}<br>
   <small>{{news.updated_at}}</small>
   <br>
+  {% if news.figure %}
   <img src="{{news.figure.url}}"/>
+  {% endif %}
 {% endif %}
 {% endblock %}
