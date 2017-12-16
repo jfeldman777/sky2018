@@ -26,16 +26,19 @@ def topic_tree(request,id):
         children = node.get_children()
         parent = node.get_parent()
         siblings = node.get_siblings()
+        friends = list(node.friends.all())
     except:
         children = []
         siblings = []
         parent = None
         node = None
+        friends = []
     return render(request,'topic_tree.html',
                     {'node':node,
                      'children':children,
                      'parent':parent,
                      'siblings':siblings,
+                     'friends':friends,
                      })
 
 def topic_search(request):

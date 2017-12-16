@@ -57,6 +57,12 @@
     </video>
     {% endif %}
 
+    <h3>{% trans 'Friends' %}</h3>
+{% for x in friends %}
+<a href="/topic_tree/{{x.id}}/">
+{{ x }}
+</a><br>
+{% endfor %}
 {% endif %}
   </div>
 </div>
