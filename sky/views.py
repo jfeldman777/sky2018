@@ -85,7 +85,10 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 def index(request):
-    news = NewsRecord.objects.all()[:1].get()
+    try:
+        news = NewsRecord.objects.all()[:1].get()
+    except:
+        news = None
     return render(request,'index.html',
         {'news':news
         })

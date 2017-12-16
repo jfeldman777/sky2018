@@ -9,11 +9,12 @@
 
 
 <hr>
+{% if news %}
   <h2>{% trans 'News' %}</h2>
   <h3>{{news.title}}</h3>
   {{news.description}}<br>
   <small>{{news.updated_at}}</small>
   <br>
   <img src="{{news.figure.url}}"/>
-
+{% endif %}
 {% endblock %}
