@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 from treebeard.al_tree import AL_Node
+
+from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 class NewsRecord(models.Model):
 
@@ -30,7 +32,7 @@ class MagicNode(AL_Node):
     sib_order = models.PositiveIntegerField()
     friends = models.ManyToManyField('self',
                                blank=True,
-                               null=True,)
+                               )
 
     desc = models.CharField(max_length=255)
     figure = models.ImageField(upload_to='uploads/%Y/%m/%d',
@@ -43,5 +45,22 @@ class MagicNode(AL_Node):
 
     video = models.FileField(upload_to='uploads/%Y/%m/%d',blank=True,
                     null=True)
+
+    sites = ArrayField(
+            models.TextField(blank=True),
+            blank = True,
+            null=True,
+            size=5,
+
+        )
+
+    videos = ArrayField(
+                models.TextField(blank=True),
+                blank = True,
+                null=True,
+                size=5,
+
+            )
+
     def __str__(self):
         return self.desc

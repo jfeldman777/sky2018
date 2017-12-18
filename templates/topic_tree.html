@@ -57,6 +57,7 @@
     </video>
     {% endif %}
 
+{% if friends %}
     <h3>{% trans 'Friends' %}</h3>
 {% for x in friends %}
 <a href="/topic_tree/{{x.id}}/">
@@ -64,6 +65,23 @@
 </a><br>
 {% endfor %}
 {% endif %}
+{% if node.sites %}
+<h3>{% trans 'Sites' %}</h3>
+{% for x in node.sites %}
+<a href="{{x}}" target="2">{{x}}</a><br>
+{% endfor %}
+{% endif %}
+
+{% if node.videos %}
+<h3>{% trans 'Videos' %}</h3>
+{% for x in node.videos %}
+<a href="{{x}}" target="1">{{x}}</a><br>
+{% endfor %}
+{% endif %}
+
+
+{% endif %}
+
   </div>
 </div>
 
