@@ -3,6 +3,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 
+class InterestForm(forms.Form):
+    i_like_the_topic = forms.BooleanField(label=_("I like the topic"))
+    i_like_the_content = forms.BooleanField(label=_("I like the content"))
+    i_am_an_expert = forms.BooleanField(label=_("I am an expert"))
+
+
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30,
         required=False,

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import NewsRecord
+from .models import NewsRecord, Interest
 
 # Register your models here.
 class NewsAdmin(admin.ModelAdmin):
@@ -7,6 +7,11 @@ class NewsAdmin(admin.ModelAdmin):
     fields = ('title', 'description', 'figure')
 
 admin.site.register(NewsRecord, NewsAdmin)
+
+class InterestAdmin(admin.ModelAdmin):
+    fields = ('user', 'topic')
+
+admin.site.register(Interest, InterestAdmin)
 
 from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory

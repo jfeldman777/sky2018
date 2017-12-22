@@ -13,7 +13,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import NameForm
 # Create your views here.
 def topic_tree(request,id):
+    pre_nodes = []
+
     get = lambda node_id: MagicNode.objects.get(pk=node_id)
+    get_by_name = lambda name: MagicNode.objects.filter(desc = name)
+
     try:
         try:
             node = get(id)
@@ -27,19 +31,31 @@ def topic_tree(request,id):
         parent = node.get_parent()
         siblings = node.get_siblings()
         friends = list(node.friends.all())
+        if node.pre_nodes:
+            pre_nodes = [list(get_by_name(x))[0] for x in node.pre_nodes]
+
     except:
         children = []
         siblings = []
         parent = None
         node = None
         friends = []
+
     return render(request,'topic_tree.html',
                     {'node':node,
                      'children':children,
                      'parent':parent,
                      'siblings':siblings,
                      'friends':friends,
+                     'pre_nodes':pre_nodes
                      })
+
+def interest_search(request):
+    result = []
+    return render(request, 'interest_search.html',
+        {
+         'result': result,
+        })
 
 def topic_search(request):
     result = None

@@ -36,8 +36,27 @@
          {% endif %}
       {% endfor %}
     </ul>
+<hr>
+  {% if not user.is_anonymous %}
+<form method="post" action=''>
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Submit" />
+</form>
+{% endif %}
   </div>
+
   <div class="col-sm-8">
+    {% if pre_nodes %}
+    <h3>{% trans 'Pre-conditions' %}</h3>
+    {% for x in pre_nodes %}
+    <a href="/topic_tree/{{x.id}}/">
+      {{x}}</a>|
+    {% endfor %}
+    {% endif %}
+
+
+
     <h2>{{node}}
   </h2>
     {% if node.figure %}

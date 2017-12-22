@@ -62,5 +62,20 @@ class MagicNode(AL_Node):
 
             )
 
+    pre_nodes = ArrayField(
+                models.TextField(blank=True),
+                blank = True,
+                null=True,
+                size=5,
+
+            )
+
     def __str__(self):
         return self.desc
+
+class Interest(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    topic = models.ForeignKey(MagicNode,on_delete=models.CASCADE)
+    i_like_the_topic = models.BooleanField()
+    i_like_the_content = models.BooleanField()
+    i_am_an_expert = models.BooleanField()
