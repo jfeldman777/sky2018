@@ -1,0 +1,51 @@
+{% load i18n %}
+{% trans 'Click YES/NO to toggle it'%}
+<script>
+var init = function(id){
+document.getElementById(id).style.visibility = "hidden";
+}
+
+var toggle = function(me,you){
+  document.getElementById(me).style.visibility = "hidden";
+//send
+  $.ajax({
+                 type: 'GET',
+                 async: false,
+                 url: '/ajax/'+{{node.id}}+'/'+you+'/',
+                 data: '',
+                 success: function(data) {
+                     alert('ajax success at db='+data['result']);
+                 },
+                 dataType: 'json',
+             });
+//receive
+  document.getElementById(you).style.visibility = "visible";
+  }
+</script>
+<ul>
+<li>{% trans 'Do you like the topic?' %}
+<b>
+  <div id='11' onclick="toggle(11,10)">YES</div>
+  <div id='10' onclick="toggle(10,11)">NO</div>
+</b>
+</li>
+
+<li>{% trans 'Do you like the content?' %}
+  <b>
+    <div id='21' onclick="toggle(21,20)">YES</div>
+    <div id='20' onclick="toggle(20,21)">NO</div>
+  </b>
+</li>
+
+<li>{% trans 'Are you an expert in this topic?' %}
+  <b>
+    <div id='31' onclick="toggle(31,30)">YES</div>
+    <div id='30' onclick="toggle(30,31)">NO</div>
+  </b>
+</li>
+</ul>
+<script>
+init({{t1}});
+init({{t2}});
+init({{t3}});
+</script>

@@ -76,6 +76,6 @@ class MagicNode(AL_Node):
 class Interest(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     topic = models.ForeignKey(MagicNode,on_delete=models.CASCADE)
-    i_like_the_topic = models.BooleanField()
-    i_like_the_content = models.BooleanField()
-    i_am_an_expert = models.BooleanField()
+    i_like_the_topic = models.BooleanField(default = False)
+    i_like_the_content = models.BooleanField(default = False)
+    i_am_an_expert = models.BooleanField(default = False)

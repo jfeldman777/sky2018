@@ -37,13 +37,9 @@
       {% endfor %}
     </ul>
 <hr>
-  {% if not user.is_anonymous %}
-<form method="post" action=''>
-  {% csrf_token %}
-  {{ form }}
-  <input type="submit" value="Submit" />
-</form>
-{% endif %}
+    {% if not user.is_anonymous %}
+        {% include 'interest.html' %}
+    {% endif %}
   </div>
 
   <div class="col-sm-8">

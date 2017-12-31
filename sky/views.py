@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
-from .models import NewsRecord, MagicNode
+from .models import NewsRecord, MagicNode, Interest
 from django.contrib.auth.models import User
 
 from collections import Counter
@@ -11,12 +11,42 @@ from operator import itemgetter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .forms import NameForm
+from django.http import JsonResponse
 # Create your views here.
+def ajax(request, node, you):
+    res = 0
+    i,created = Interest.objects.get_or_create(topic = node, user = request.user)
+    if you == 10:
+        i.i_like_the_topic = False
+    elif you == 11:
+        i.i_like_the_topic = True
+    elif you == 20:
+        i.i_like_the_content = False
+    elif you == 21:
+        i.i_like_the_content = True
+    elif you == 30:
+        i.i_am_an_expert = False
+    else:
+        i.i_am_an_expert = True
+
+    try:
+        i.save()
+        res = 1
+    except:
+        pass
+
+    context = {'result': res}
+
+    print('ajax on the fly')
+
+    return JsonResponse(context)
+
+
 def topic_tree(request,id):
     pre_nodes = []
-
     get = lambda node_id: MagicNode.objects.get(pk=node_id)
     get_by_name = lambda name: MagicNode.objects.filter(desc = name)
+    t1,t2,t3 = (False,False,False)
 
     try:
         try:
@@ -27,12 +57,19 @@ def topic_tree(request,id):
         if node.is_root():
             node = node.get_first_child()
 
+        try:
+            i,created = Interest.objects.get_or_create(user = request.user, topic = node)
+            t1,t2,t3 = (i.i_like_the_topic, i.i_like_the_content, i.i_am_an_expert)
+        except:
+            print(request.user, node, "cannot find interest")
+
         children = node.get_children()
         parent = node.get_parent()
         siblings = node.get_siblings()
         friends = list(node.friends.all())
         if node.pre_nodes:
             pre_nodes = [list(get_by_name(x))[0] for x in node.pre_nodes]
+
 
     except:
         children = []
@@ -41,13 +78,20 @@ def topic_tree(request,id):
         node = None
         friends = []
 
+    p1 = 10 if t1 else 11
+    p2 = 20 if t2 else 21
+    p3 = 30 if t3 else 31
+
     return render(request,'topic_tree.html',
                     {'node':node,
                      'children':children,
                      'parent':parent,
                      'siblings':siblings,
                      'friends':friends,
-                     'pre_nodes':pre_nodes
+                     'pre_nodes':pre_nodes,
+                     't1':p1,
+                     't2':p2,
+                     't3':p3,
                      })
 
 def interest_search(request):
