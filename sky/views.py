@@ -110,10 +110,11 @@ def interest_search(request):
 
     dd = {}
     su = d[request.user]
-    for u in uu:
-        dd[u] = len(su.intersection(d[u]))/len(su.union(d[u]))
+    if len(su) > 0:
+        for u in uu:
+            dd[u] = len(su.intersection(d[u]))/len(su.union(d[u]))
 
-    result = sorted(dd.items(), key=lambda item: -item[1])
+        result = sorted(dd.items(), key=lambda item: -item[1])
     return render(request, 'interest_search.html',
         {
          'result': result,
