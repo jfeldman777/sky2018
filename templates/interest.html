@@ -1,7 +1,7 @@
 {% load i18n %}
 {% trans 'Click YES/NO to toggle it'%}
 <script>
-var init = function(id){
+var hide = function(id){
 document.getElementById(id).style.visibility = "hidden";
 }
 
@@ -25,27 +25,39 @@ var toggle = function(me,you){
 <ul>
 <li>{% trans 'Do you like the topic?' %}
 <b>
-  <div id='11' onclick="toggle(11,10)">YES</div>
-  <div id='10' onclick="toggle(10,11)">NO</div>
-</b>
+  <div id='11' onclick="toggle(11,10)">
+  {% trans 'YES' %}
+  </div>
+  <div id='10' onclick="toggle(10,11)">
+    {% trans 'NO' %}
+  </div>
+</b><br>
 </li>
 
 <li>{% trans 'Do you like the content?' %}
   <b>
-    <div id='21' onclick="toggle(21,20)">YES</div>
-    <div id='20' onclick="toggle(20,21)">NO</div>
-  </b>
+    <div id='21' onclick="toggle(21,20)">
+  {% trans 'YES' %}
+    </div>
+    <div id='20' onclick="toggle(20,21)">
+      {% trans 'NO' %}
+    </div>
+  </b><br>
 </li>
 
 <li>{% trans 'Are you an expert in this topic?' %}
   <b>
-    <div id='31' onclick="toggle(31,30)">YES</div>
-    <div id='30' onclick="toggle(30,31)">NO</div>
-  </b>
+    <div id='31' onclick="toggle(31,30)">
+  {% trans 'YES' %}
+    </div>
+    <div id='30' onclick="toggle(30,31)">
+    {% trans 'NO' %}  
+    </div>
+  </b><br>
 </li>
 </ul>
 <script>
-init({{t1}});
-init({{t2}});
-init({{t3}});
+hide({{t1}});
+hide({{t2}});
+hide({{t3}});
 </script>

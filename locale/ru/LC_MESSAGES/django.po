@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-01 20:49+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\sky\forms.py:7
+msgid "I like the topic"
+msgstr "Мне нравится эта тема"
+
+#: .\sky\forms.py:8
+msgid "I like the content"
+msgstr "Мне нравится это содержание"
+
+#: .\sky\forms.py:9
+msgid "I am an expert"
+msgstr "Я эксперт в этом вопросе"
+
+#: .\sky\forms.py:15 .\sky\forms.py:19
+msgid "Optional."
+msgstr "Необязательно."
+
+#: .\sky\forms.py:16
+msgid "First Name"
+msgstr "Имя"
+
+#: .\sky\forms.py:20
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: .\sky\forms.py:22
+msgid "Required. Inform a valid email address."
+msgstr "Обязательно. Введите правильную электронную почту."
+
+#: .\sky\forms.py:23
+msgid "Email"
+msgstr "Электронная почта"
+
+#: .\sky\forms.py:30
+msgid "name to find"
+msgstr "искать по названию"
+
+#: .\sky\models.py:11
+msgid "Title"
+msgstr "Заголовок"
+
+#: .\sky\models.py:15
+msgid "Content"
+msgstr "Содержание"
+
+#: .\sky\models.py:21 .\sky\models.py:41
+msgid "Figure"
+msgstr "Рисунок"
+
+#: .\sky\models.py:43
+msgid "Text"
+msgstr "Текст"
+
+#: .\templates\base1.html:28
+msgid "LOGOUT"
+msgstr "Выйти"
+
+#: .\templates\base1.html:33
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+#: .\templates\base1.html:48
+msgid "Home"
+msgstr "Домой"
+
+#: .\templates\base1.html:54 .\templates\index.html:13 .\templates\news.html:6
+msgid "News"
+msgstr "Новости"
+
+#: .\templates\base1.html:60
+msgid "Forum"
+msgstr "Форум"
+
+#: .\templates\base1.html:66
+msgid "Topic Tree"
+msgstr "Дерево тем"
+
+#: .\templates\base1.html:71
+msgid "Topic Search"
+msgstr "Поиск по темам"
+
+#: .\templates\base1.html:77
+msgid "Interest Search"
+msgstr "Поиск по интересам"
+
+#: .\templates\index.html:6
+msgid "for new visitors"
+msgstr "Для новых посетителей"
+
+#: .\templates\index.html:8
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+#: .\templates\interest.html:2
+msgid "Click YES/NO to toggle it"
+msgstr "Кликните ДА/НЕТ чтобы изменить ответ"
+
+#: .\templates\interest.html:26
+msgid "Do you like the topic?"
+msgstr "Вам нравится эта тема?"
+
+#: .\templates\interest.html:29 .\templates\interest.html:40
+#: .\templates\interest.html:51
+msgid "YES"
+msgstr "ДА"
+
+#: .\templates\interest.html:32 .\templates\interest.html:43
+#: .\templates\interest.html:54
+msgid "NO"
+msgstr "НЕТ"
+
+#: .\templates\interest.html:37
+msgid "Do you like the content?"
+msgstr "Вам нравится это содержание?"
+
+#: .\templates\interest.html:48
+msgid "Are you an expert in this topic?"
+msgstr "Чувствуете себя экспертом в данной теме?"
+
+#: .\templates\interest_search.html:6
+msgid "Interest search"
+msgstr "Поиск по интересам"
+
+#: .\templates\login.html:4
+msgid "Your username and password didn't match. Please try again."
+msgstr "Имя пользователя и пароль не подходят друг другу. Повторите попытку."
+
+#: .\templates\login.html:10
+msgid "Register or Log in"
+msgstr "Зарегистрироваться или войти"
+
+#: .\templates\login.html:18
+msgid "Log in"
+msgstr "Войти"
+
+#: .\templates\login.html:26
+msgid "Sign Up"
+msgstr "Зарегистрироваться"
+
+#: .\templates\login.html:30
+msgid "Restore Password"
+msgstr "Восстановить пароь"
+
+#: .\templates\msg.html:8
+msgid "OK, get me HOME"
+msgstr "Ладно, пошли домой"
+
+#: .\templates\news.html:28
+msgid "(current)"
+msgstr "(текущее)"
+
+#: .\templates\topic_search.html:6
+msgid "Name search"
+msgstr "Поиск по имени"
+
+#: .\templates\topic_tree.html:7
+msgid "Navigator"
+msgstr "Навигатор"
+
+#: .\templates\topic_tree.html:47
+msgid "Pre-conditions"
+msgstr "Пред-условия"
+
+#: .\templates\topic_tree.html:76
+msgid "Friends"
+msgstr "Друзья"
+
+#: .\templates\topic_tree.html:84
+msgid "Sites"
+msgstr "Сайты"
+
+#: .\templates\topic_tree.html:91
+msgid "Videos"
+msgstr "Видео"

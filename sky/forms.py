@@ -27,4 +27,4 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
 class NameForm(forms.Form):
-    name = forms.CharField(label='name to find', max_length=100)
+    name = forms.CharField(label=_('name to find'), max_length=100)
