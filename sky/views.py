@@ -94,8 +94,26 @@ def topic_tree(request,id):
                      't3':p3,
                      })
 
+def user2like(user):
+    i = Interest.objects.filter(user = user, i_like_the_topic = True)
+    s = set()
+    for x in i:
+        s.add(x.topic.id)
+    return s
+
 def interest_search(request):
     result = []
+    d = {}
+    uu = User.objects.all()
+    for u in uu:
+        d[u] = user2like(u)
+
+    dd = {}
+    su = d[request.user]
+    for u in uu:
+        dd[u] = len(su.intersection(d[u]))/len(su.union(d[u]))
+
+    result = sorted(dd.items(), key=lambda item: -item[1])
     return render(request, 'interest_search.html',
         {
          'result': result,

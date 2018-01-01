@@ -6,11 +6,11 @@
     {% trans 'Interest search' %}</h2>
   {% if result %}
     <ul>
-    {% for u in result %}
+    {% for u,r in result %}
     <li>
-      <a href='mailto:{{u.email}}/'>
+      <a href='mailto:{{u.email}}'>
         {{u}}
-      </a>
+      </a>={{r}}
     </li>
     {% endfor %}
     </ul>
