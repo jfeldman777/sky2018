@@ -114,7 +114,7 @@ def expert_search(request):
         for u in uu:
             dd[u] = len(su.intersection(d[u]))/len(su)
 
-        result = sorted(dd.items(), key=lambda item: (-item[1], item[0]))
+        result = sorted(dd.items(), key=lambda item: (-item[1], item[0].username))
     return render(request, 'expert_search.html',
         {
          'result': result,
@@ -133,7 +133,7 @@ def interest_search(request):
         for u in uu:
             dd[u] = len(su.intersection(d[u]))/len(su.union(d[u]))
 
-        result = sorted(dd.items(), key=lambda item: (-item[1], item[0]))
+        result = sorted(dd.items(), key=lambda item: (-item[1], item[0].username))
     return render(request, 'interest_search.html',
         {
          'result': result,
