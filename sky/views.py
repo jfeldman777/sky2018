@@ -94,6 +94,13 @@ def topic_tree(request,id):
                      't3':p3,
                      })
 
+def user2expert(user):
+    i = Interest.objects.filter(user = user, i_am_an_expert = True)
+    s = set()
+    for x in i:
+        s.add(x.topic.id)
+    return s
+
 def user2like(user):
     i = Interest.objects.filter(user = user, i_like_the_topic = True)
     s = set()
@@ -106,7 +113,7 @@ def expert_search(request):
     d = {}
     uu = User.objects.all()
     for u in uu:
-        d[u] = user2like(u)
+        d[u] = user2expert(u)
 
     dd = {}
     su = d[request.user]
