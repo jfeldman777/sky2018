@@ -101,6 +101,25 @@ def user2like(user):
         s.add(x.topic.id)
     return s
 
+def expert_search(request):
+    result = []
+    d = {}
+    uu = User.objects.all()
+    for u in uu:
+        d[u] = user2like(u)
+
+    dd = {}
+    su = d[request.user]
+    if len(su) > 0:
+        for u in uu:
+            dd[u] = len(su.intersection(d[u]))/len(su)
+
+        result = sorted(dd.items(), key=lambda item: (-item[1], item[0]))
+    return render(request, 'expert_search.html',
+        {
+         'result': result,
+        })
+
 def interest_search(request):
     result = []
     d = {}
@@ -114,7 +133,7 @@ def interest_search(request):
         for u in uu:
             dd[u] = len(su.intersection(d[u]))/len(su.union(d[u]))
 
-        result = sorted(dd.items(), key=lambda item: -item[1])
+        result = sorted(dd.items(), key=lambda item: (-item[1], item[0]))
     return render(request, 'interest_search.html',
         {
          'result': result,

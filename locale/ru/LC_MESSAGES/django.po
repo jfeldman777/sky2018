@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-01 20:49+0300\n"
+"POT-Creation-Date: 2018-01-03 19:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,6 +103,14 @@ msgstr "Поиск по темам"
 #: .\templates\base1.html:77
 msgid "Interest Search"
 msgstr "Поиск по интересам"
+
+#: .\templates\base1.html:83
+msgid "Expert Search"
+msgstr "Поиск по экспертам"
+
+#: .\templates\expert_search.html:6
+msgid "Expert search"
+msgstr "Поиск по экспертам"
 
 #: .\templates\index.html:6
 msgid "for new visitors"

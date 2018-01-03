@@ -1,0 +1,19 @@
+{% extends "base1.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h2>
+    {% trans 'Expert search' %}</h2>
+  {% if result %}
+    <ul>
+    {% for u,r in result %}
+    <li>
+      <a href='mailto:{{u.email}}'>
+        {{u}}
+      </a>={{r}}
+    </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}
