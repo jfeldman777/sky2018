@@ -25,10 +25,10 @@ var toggle = function(me,you){
 <ul>
 <li>{% trans 'Do you like the topic?' %}
 <b>
-  <div id='11' onclick="toggle(11,10)">
+  <div id='11' onclick="toggle(11,10)" title="{% trans 'click to change' %}">
   {% trans 'YES' %}
   </div>
-  <div id='10' onclick="toggle(10,11)">
+  <div id='10' onclick="toggle(10,11)" title="{% trans 'click to change' %}">
     {% trans 'NO' %}
   </div>
 </b><br>
@@ -36,10 +36,10 @@ var toggle = function(me,you){
 
 <li>{% trans 'Do you like the content?' %}
   <b>
-    <div id='21' onclick="toggle(21,20)">
+    <div id='21' onclick="toggle(21,20)" title="{% trans 'click to change' %}">
   {% trans 'YES' %}
     </div>
-    <div id='20' onclick="toggle(20,21)">
+    <div id='20' onclick="toggle(20,21)" title="{% trans 'click to change' %}">
       {% trans 'NO' %}
     </div>
   </b><br>
@@ -47,11 +47,11 @@ var toggle = function(me,you){
 
 <li>{% trans 'Are you an expert in this topic?' %}
   <b>
-    <div id='31' onclick="toggle(31,30)">
+    <div id='31' onclick="toggle(31,30)" title="{% trans 'click to change' %}">
   {% trans 'YES' %}
     </div>
-    <div id='30' onclick="toggle(30,31)">
-    {% trans 'NO' %}  
+    <div id='30' onclick="toggle(30,31)" title="{% trans 'click to change' %}">
+    {% trans 'NO' %}
     </div>
   </b><br>
 </li>
