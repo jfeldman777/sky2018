@@ -17,9 +17,9 @@ class Area(models.Model):
 
 class AreaPlus(models.Model):
     area = models.ForeignKey(Area,on_delete=models.CASCADE)
-    node = MagicNode()
+    node = models.ForeignKey(MagicNode,on_delete=models.CASCADE)
     alone = models.BooleanField(default = False)
     minus = models.BooleanField(default = False)
 
     def __str__(self):
-        return self.node
+        return self.node.desc

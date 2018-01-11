@@ -47,9 +47,7 @@ def tree_next(node,user):
         return node
     else:
         children = node.get_children()
-        if not children:
-            return None
-        else:
+        if children:
             for x in children:
                 res = tree_next(x,user)
                 if res:

@@ -6,43 +6,56 @@
 {% trans 'Tree of Knowledge' %} <b>({% trans 'draft' %})</b>
 </a>
 <div class="row">
-  <div class="col-sm-3">
-    <h3>{% trans 'Node selected' %}</h3>
-    {% if node_name %}
-      {{node_name}}<br>
-      <a href="/area/create">{% trans 'Create new area with the root' %}</a>
-    {% else %}
-      {% trans 'No node is selected.' %}<br>
-      {% trans 'Go home, select node, and return. ' %}
-    {% endif %}
+  <div class="col-sm-4">
+    <h2>{% trans 'My areas' %}</h2>
+      {% for a in my_areas %}
+      <a href="/area/bag/{{a.id}}/">
+        {% if a == area %}<b>{% endif %}
+        {{a}}
+        {% if a == area %}</b>{% endif %}
+            </a>
+      <br>
+      {% endfor %}
+<hr>
+<!--a href="/area/create/">
+      {% trans 'Create new area' %}<br>
+</a-->
   </div>
 
+  <div class="col-sm-8">
+<h2>{{area}}:
+  {% trans 'Contents' %} </h2>
 
-  <div class="col-sm-3">
-    <h3>{% trans 'Contents of the area' %}</h3>
-    {{root}}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>{% trans 'Nodes' %}</th>
+        <th>{% trans 'root of subtree' %}</th>
+        <th>{% trans 'plus/minus' %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{% trans 'Main root' %}</td>
+        <td><span class="glyphicon glyphicon-plus"></span></td>
+        <td><span class="glyphicon glyphicon-plus"></span></td>
+      </tr>
+      {% for x,x1,x2 in bag %}
+      <tr>
+        <td>{{x}}</td>
+        <td>
+          <span class="glyphicon glyphicon-{{x1}}"></span>
+        </td>
+        <td>
+          <span class="glyphicon glyphicon-{{x2}}"></span>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
   </div>
+</div>
 
-   <div class="col-sm-3">
-     <h3>{% trans 'Area selected' %}</h3>
-     {{area_selected}}
-    </div>
-
-    <div class="col-sm-3">
-      <h3>{% trans 'Areas' %}</h3>
-      {% if areas or my_areas %}
-        {% for a in my_areas %}
-        {{a}}<br>
-        {% endfor %}
-        <h3>{% trans 'Not mine:'%}</h3>
-        {% for a in areas %}
-        {{a}}<br>
-        {% endfor %}
-
-      {% else %}
-        {% trans 'List of areas is empty.' %}<br>
-        {% trans 'To create new area select node first.' %}
-      {% endif %}
-      </div>
-    </div>
 {% endblock %}

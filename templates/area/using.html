@@ -5,6 +5,74 @@
 <a href="https://realtimeboard.com/app/board/o9J_k0c_E_E=/" target="rtboard">
 {% trans 'Tree of Knowledge' %} <b>({% trans 'draft' %})</b>
 </a>
-<h1>{% trans 'Using Areas' %}!</h1>
+<div class="row">
+  <div class="col-sm-4">
+    <h2>{% trans 'My areas' %}</h2>
+    {% if areas or my_areas %}
+      {% for a in my_areas %}
+      <a href="/area/report2/{{a.id}}/">
+        {% if a == area %}<b>{% endif %}
+        {{a}}
+        {% if a == area %}</b>{% endif %}
+      </a>
+      <br>
+      {% endfor %}
+      <h3>{% trans 'Not mine:'%}</h3>
+      {% for a in areas %}
+    <a href="/area/report2/{{a.id}}/">
+      {% if a == area %}<b>{% endif %}
+        {{a}}
+        {% if a == area %}</b>{% endif %}
+      </a>
+      <br>
+      {% endfor %}
+
+    {% else %}
+      {% trans 'List of areas is empty.' %}<br>
+    {% endif %}
+  </div>
+
+  <div class="col-sm-8">
+<h2>{{area}}:
+   {% trans 'Report' %} </h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>{% trans 'Mark' %}</th>
+        <th>{% trans 'YES' %}</th>
+        <th>{% trans 'NO' %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{% trans 'I like the topic' %}</td>
+        <td>{{count0}}</td>
+        <td>{{count1}}</td>
+      </tr>
+      <tr>
+        <td>{% trans 'I like the content'%}</td>
+        <td>{{count2}}</td>
+        <td>{{count3}}</td>
+      </tr>
+      <tr>
+        <td>{% trans 'I am an expert'%}</td>
+        <td>{{count4}}</td>
+        <td>{{count5}}</td>
+      </tr>
+      <tr>
+        <td>{% trans 'Next topic recommended'%}</td>
+        <td></td>
+        <td><a href="/topic_tree/{{next.id}}/">
+          {{next}}
+        </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  </div>
+</div>
 
 {% endblock %}
