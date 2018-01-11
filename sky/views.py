@@ -57,7 +57,7 @@ def tree_next(node,user):
     return  MagicNode.get_first_root_node()
 
 def tree_count(count, node, user):
-    me = Interest.objects.get(user = user, topic = node)
+    me,c = Interest.objects.get_or_create(user = user, topic = node)
     if me.i_like_the_topic:
         count[0]+=1
     else:
