@@ -41,6 +41,72 @@ def ajax(request, node, you):
 
     return JsonResponse(context)
 
+def tree_next(node,user):
+    me = Interest.objects.get(user = user, topic = node)
+    if not me.i_am_an_expert:
+        return node
+    else:
+        children = node.get_children()
+        if not children:
+            return None
+        else:
+            for x in children:
+                res = tree_next(x,user)
+                if res:
+                    return res
+    return  MagicNode.get_first_root_node()
+
+def tree_count(count, node, user):
+    me = Interest.objects.get(user = user, topic = node)
+    if me.i_like_the_topic:
+        count[0]+=1
+    else:
+        count[1]+=1
+    if me.i_like_the_content:
+        count[2]+=1
+    else:
+        count[3]+=1
+    if me.i_am_an_expert:
+        count[4]+=1
+    else:
+        count[5]+=1
+
+    children = node.get_children()
+    for child in children:
+        tree_count(count,child,user)
+
+
+def report(request,id):
+    get = lambda node_id: MagicNode.objects.get(pk=node_id)
+    try:
+        node = get(id)
+    except:
+        node = MagicNode.get_first_root_node()
+
+    if node.is_root():
+        node = node.get_first_child()
+
+    children = node.get_children()
+    parent = node.get_parent()
+    siblings = node.get_siblings()
+
+    count = [0]*6
+    tree_count(count,node,request.user)
+    next = tree_next(node,request.user)
+
+    return render(request,'report.html',
+                    {'node':node,
+                     'children':children,
+                     'parent':parent,
+                     'siblings':siblings,
+                     'count0':count[0],
+                     'count1':count[1],
+                     'count2':count[2],
+                     'count3':count[3],
+                     'count4':count[4],
+                     'count5':count[5],
+                     'next':next,
+                     })
 
 def topic_tree(request,id):
     pre_nodes = []
@@ -81,6 +147,10 @@ def topic_tree(request,id):
     p1 = 10 if t1 else 11
     p2 = 20 if t2 else 21
     p3 = 30 if t3 else 31
+
+    if node:
+        request.session['node_id'] = node.id
+        request.session['node_name'] = node.desc
 
     return render(request,'topic_tree.html',
                     {'node':node,

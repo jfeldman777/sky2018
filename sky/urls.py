@@ -8,7 +8,10 @@ urlpatterns = [
     path('interest_search/', views.interest_search),
     path('expert_search/', views.expert_search),
     path('topic_search/', views.topic_search),
+
+    path('report/<int:id>/', views.report),
     path('topic_tree/<int:id>/', views.topic_tree),
+
     path('news/', views.news),
     re_path('^', views.index, name='index'),
 ]

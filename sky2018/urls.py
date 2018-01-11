@@ -34,6 +34,7 @@ urlpatterns += [
 ]
 
 urlpatterns += [
+    path('area/', include('area.urls')),    
     re_path('^signup/$', core_views.signup, name='signup'),
     re_path('^password_change/done/$', core_views.password_change_done,
         name='password_change_done'),

@@ -1,0 +1,83 @@
+{% extends "base1.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-4">
+    <h2>{% trans 'Navigator' %}</h2>
+    {% if parent %}
+      <a href="/topic_tree/{{parent.id}}/">
+    {{ parent }}
+      </a>
+    <ul>
+{% endif %}
+      {% for x in siblings %}
+
+          <li>
+              <a href="/topic_tree/{{x.id}}/">
+                  {% if x == node %}<b>{% endif %}
+            {{x}}
+            {% if x == node %}</b>{% endif %}
+              </a>
+
+        {% if x == node %}
+
+          <ul>
+            {% for t in children %}
+              <li>
+                <a href="/topic_tree/{{t.id}}/">
+                {{t}}
+                </a>
+              </li>
+              {% endfor %}
+          </ul>
+       {% endif %}
+        </li>
+
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="col-sm-8">
+<h2> {% trans 'Report' %} </h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>{% trans 'Mark' %}</th>
+        <th>{% trans 'YES' %}</th>
+        <th>{% trans 'NO' %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{% trans 'I like the topic' %}</td>
+        <td>{{count0}}</td>
+        <td>{{count1}}</td>
+      </tr>
+      <tr>
+        <td>{% trans 'I like the content'%}</td>
+        <td>{{count2}}</td>
+        <td>{{count3}}</td>
+      </tr>
+      <tr>
+        <td>{% trans 'I am an expert'%}</td>
+        <td>{{count4}}</td>
+        <td>{{count5}}</td>
+      </tr>
+      <tr>
+        <td>{% trans 'Next topic recommended'%}</td>
+        <td></td>
+        <td><a href="/topic_tree/{{next.id}}/">
+          {{next}}
+        </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  </div>
+</div>
+
+{% endblock %}

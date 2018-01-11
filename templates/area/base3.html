@@ -17,21 +17,12 @@
         <span class="pull-right">
 
     {% if user.is_anonymous %}
-        {% include 'login.html' %}
     {% else %}
       {{ form.username.label_tag }}
       {{ user }}
 <a href='http://gravatar.com' title="go get gravatar" target="gravatar">
 {{ user.email|gravatar:40 }}</a>
 
-<a href="{% url 'logout' %}" class="btn btn-primary">
-  {% trans 'LOGOUT' %}
-  <span class="glyphicon glyphicon-log-out"></span></a>
-
-  <a href="{% url 'password_change' %}" class="btn btn-warning">
-    <span class="glyphicon glyphicon-lock"></span>
-{% trans 'Change Password' %}
-  </a>
       {% endif %}
     </span>
     </div>
@@ -43,47 +34,31 @@
     <div class="container">
       <ul class="nav nav-pills nav-fill">
 
+
+
       </li>        <li class="nav-item">
         <a class="nav-link" href="/" >
           {% trans 'Home' %}
         </a>
       </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/news/" >
-            {% trans 'News' %}
-          </a>
-</li>
+    </li>        <li class="nav-item">
+      <a class="nav-link" href="/area/" >
+        {% trans 'Areas Home' %}
+      </a>
+    </li>
 
-  <li class="nav-item">
-    <a class="nav-link" href="/forum/" target="forum">
-      {% trans 'Forum' %}
+    </li>        <li class="nav-item">
+      <a class="nav-link" href="admin" >
+        {% trans 'Areas Admin' %}
+      </a>
+    </li>
+
+  </li>        <li class="nav-item">
+    <a class="nav-link" href="using" >
+      {% trans 'Using Areas' %}
     </a>
   </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/topic_tree/0/">
-        <b>    {% trans 'Tree of Knowledge' %} </b>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/topic_search/">
-            {% trans 'Topic Search' %}
-          </a>
-        </li>
-  {% if not user.is_anonymous %}
-  <li class="nav-item">
-    <a class="nav-link" href="/interest_search/">
-      {% trans 'Interest Search' %}
-    </a>
-  </li>
-
-  <!--li class="nav-item">
-    <a class="nav-link" href="/area/">
-      {% trans 'Area work' %}
-    </a>
-  </li-->
-{% endif %}
       </ul>
 
 </div>

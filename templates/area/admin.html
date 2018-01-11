@@ -1,0 +1,48 @@
+{% extends "area/base3.html" %}
+{% load i18n %}
+
+{% block content %}
+<a href="https://realtimeboard.com/app/board/o9J_k0c_E_E=/" target="rtboard">
+{% trans 'Tree of Knowledge' %} <b>({% trans 'draft' %})</b>
+</a>
+<div class="row">
+  <div class="col-sm-3">
+    <h3>{% trans 'Node selected' %}</h3>
+    {% if node_name %}
+      {{node_name}}<br>
+      <a href="/area/create">{% trans 'Create new area with the root' %}</a>
+    {% else %}
+      {% trans 'No node is selected.' %}<br>
+      {% trans 'Go home, select node, and return. ' %}
+    {% endif %}
+  </div>
+
+
+  <div class="col-sm-3">
+    <h3>{% trans 'Contents of the area' %}</h3>
+    {{root}}
+  </div>
+
+   <div class="col-sm-3">
+     <h3>{% trans 'Area selected' %}</h3>
+     {{area_selected}}
+    </div>
+
+    <div class="col-sm-3">
+      <h3>{% trans 'Areas' %}</h3>
+      {% if areas or my_areas %}
+        {% for a in my_areas %}
+        {{a}}<br>
+        {% endfor %}
+        <h3>{% trans 'Not mine:'%}</h3>
+        {% for a in areas %}
+        {{a}}<br>
+        {% endfor %}
+
+      {% else %}
+        {% trans 'List of areas is empty.' %}<br>
+        {% trans 'To create new area select node first.' %}
+      {% endif %}
+      </div>
+    </div>
+{% endblock %}
