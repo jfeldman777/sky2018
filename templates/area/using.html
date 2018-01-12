@@ -21,7 +21,7 @@
       {% for a in areas %}
     <a href="/area/report2/{{a.id}}/">
       {% if a == area %}<b>{% endif %}
-        {{a}}
+        {{a}} ( {{a.user}} )
         {% if a == area %}</b>{% endif %}
       </a>
       <br>

@@ -1,16 +1,74 @@
 from django.shortcuts import render
 from django.db.models import Q
 from .models import Area, AreaPlus
+from .forms import RenameForm
 from sky.models import MagicNode
 from sky.views import tree_count, tree_next
 
+def delete_line(request,id, line_id):
+    plus = AreaPlus.objects.get(id=line_id)
+    plus.delete()
+    return bag(request,id)
+
+def col1(request,id, line_id):
+    plus = AreaPlus.objects.get(id=line_id)
+    plus.alone = not plus.alone
+    plus.save()
+    return bag(request,id)
+
+def col2(request,id, line_id):
+    plus = AreaPlus.objects.get(id=line_id)
+    plus.minus = not plus.minus
+    plus.save()
+    return bag(request,id)
+
+
+def rename(request, id):
+    area = Area.objects.get(id=id)
+    if request.method == 'POST':
+        form = RenameForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            area.name = name
+            area.save()
+    else:
+        form = RenameForm(initial={'name':area.name})
+        return render(request,'area/rename.html',
+            {
+            'form':form
+            })
+
+    return bag(request,id)
+
 def areas_admin(request):
     my_areas = Area.objects.filter(user = request.user)
-    areas = Area.objects.filter(is_published = True).exclude(user = request.user)
+    node_name = request.session.get('node_name')
+    node_id = request.session.get('node_id')
+    return render(request,'area/admin.html',
+        {
+            'node_name':node_name,
+            'node_id':node_id,
+            'my_areas':my_areas,
+        })
+
+def add(request,area_id):
+    area = Area.objects.get(id=area_id)
+    my_areas = Area.objects.filter(user = request.user)
+    node_id = request.session.get('node_id')
+
+    plus = AreaPlus(area = area, node_id = node_id)
+    plus.save()
+
+    root = area.root
+
+    xx = my_bag(area)
+
     return render(request,'area/admin.html',
         {
             'my_areas':my_areas,
-            'areas':areas,
+            'area':area,
+            'bag':xx,
+            'root':root,
         })
 
 def using_areas(request):
@@ -23,27 +81,49 @@ def using_areas(request):
             'areas':areas,
         })
 
+def my_bag(area):
+    qq = AreaPlus.objects.filter(area = area)
+
+    xx = []
+    if qq:
+        for q in qq:
+            if q.alone:
+                x1 = 'minus'
+            else:
+                x1 = 'plus'
+
+            if q.minus:
+                x2 = 'minus'
+            else:
+                x2 = 'plus'
+        xx.append((q.node, x1, x2, q.id))
+    return xx
+
+def pub(request,id):
+    area = Area.objects.get(id=id)
+    area.is_published = True
+    area.save()
+    return bag(request,id)
+
+def unpub(request,id):
+    area = Area.objects.get(id=id)
+    area.is_published = False
+    area.save()
+    return bag(request,id)
+
 def bag(request,id):
     area = Area.objects.get(id=id)
     my_areas = Area.objects.filter(user = request.user)
     areas = Area.objects.filter(is_published = True).exclude(user = request.user)
-    qq = AreaPlus.objects.filter(area = area)
 
-    xx = []
-    for q in qq:
-        if q.alone:
-            x1 = 'minus'
-        else:
-            x1 = 'plus'
+    xx = my_bag(area)
 
-        if q.minus:
-            x2 = 'minus'
-        else:
-            x2 = 'plus'
-        xx.append((q.node, x1, x2))
-
+    node_name = request.session.get('node_name')
+    node_id = request.session.get('node_id')
     return render(request,'area/admin.html',
         {
+            'node_name':node_name,
+            'node_id':node_id,
             'my_areas':my_areas,
             'areas':areas,
             'root': area.root,
@@ -80,19 +160,24 @@ def report2(request,id):
              'next':next,
              })
 
+def delete_area(request,id):
+    area = Area.objects.get(id=id)
+    area.delete()
+    my_areas = Area.objects.filter(user = request.user)
+    return render(request,'area/admin.html',
+        {
+            'my_areas':my_areas,
+        })
+
 def area_create(request):
     node_id = request.session.get('node_id')
-    print(node_id)
     node = MagicNode.objects.get(id = node_id)
-    print(node)
-    area = Area.objects.create(user = request.user, name = node.desc, root = node)
-    request.session['selected_area']=area.id
-
-    my_areas = Area.objects.filter(user = request.user).exclude(id = area.id)
+    area = Area(user = request.user, name = node.desc, root = node)
+    area.save()
+    my_areas = Area.objects.filter(user = request.user)
     areas = Area.objects.filter(is_published = True).exclude(user = request.user)
 
     return render(request,'area/admin.html',{
-        'selected_area':area,
         'areas':areas,
         'my_areas':my_areas,
         'root':node

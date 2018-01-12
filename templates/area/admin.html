@@ -9,17 +9,47 @@
   <div class="col-sm-4">
     <h2>{% trans 'My areas' %}</h2>
       {% for a in my_areas %}
+
+      {% if a.is_published %}
+      <a href="/area/unpub/{{a.id}}/" title='publish area'>
+      <span class="glyphicon glyphicon-globe"></span>
+      </a>
+{% else %}
+<a href="/area/pub/{{a.id}}/" title='publish area'>
+<span class="glyphicon glyphicon-dashboard"></span>
+</a>
+{% endif %}
       <a href="/area/bag/{{a.id}}/">
         {% if a == area %}<b>{% endif %}
         {{a}}
         {% if a == area %}</b>{% endif %}
             </a>
+            <a href="/area/delete/{{a.id}}/" title='delete area'
+              onclick="if (!confirm('This area will be deleted. Are you sure?')) return false;"
+            >
+   <span class="glyphicon glyphicon-remove"></span>
+ </a>
+ <a href="/area/rename/{{a.id}}/" title='rename area' >
+<span class="glyphicon glyphicon-edit"></span>
+</a>
+
+
       <br>
       {% endfor %}
 <hr>
-<!--a href="/area/create/">
-      {% trans 'Create new area' %}<br>
-</a-->
+{% if node_name %}
+{% trans 'Node selected' %}<br>
+<b>{{node_name}}</b>
+<br>
+<a href="/area/create/">
+  {% trans 'Create new area from the node' %}
+</a>
+<br>
+<a href="/area/add/{{area.id}}/">
+      {% trans 'Add node to selected area' %}
+</a>
+
+{% endif %}
   </div>
 
   <div class="col-sm-8">
@@ -32,23 +62,37 @@
         <th>{% trans 'Nodes' %}</th>
         <th>{% trans 'root of subtree' %}</th>
         <th>{% trans 'plus/minus' %}</th>
+        <th>{% trans 'delete line' %}</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>{% trans 'Main root' %}</td>
+        <td>{{root}}</td>
         <td><span class="glyphicon glyphicon-plus"></span></td>
         <td><span class="glyphicon glyphicon-plus"></span></td>
+        <td></td>
       </tr>
-      {% for x,x1,x2 in bag %}
+      {% for x,x1,x2,i in bag %}
       <tr>
         <td>{{x}}</td>
         <td>
+          <a href="/area/col1/{{area.id}}/{{i}}/" title='click to change'>
           <span class="glyphicon glyphicon-{{x1}}"></span>
+          </a>
         </td>
         <td>
+          <a href="/area/col2/{{area.id}}/{{i}}/" title='click to change'>
           <span class="glyphicon glyphicon-{{x2}}"></span>
+          </a>
         </td>
+                <td>
+        <a href="/area/delete_line/{{area.id}}/{{i}}/" title='delete line'
+          onclick="if (!confirm('This line will be deleted. Are you sure?')) return false;"
+        >
+         <span class="glyphicon glyphicon-remove"></span>
+      </a>
+        </td>
+
       </tr>
       {% endfor %}
     </tbody>
