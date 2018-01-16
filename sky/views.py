@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from .models import NewsRecord, MagicNode, Interest
+from area.models import Subscription
 from django.contrib.auth.models import User
 
 from collections import Counter
@@ -75,14 +76,7 @@ def tree_count(count, node, user):
 
 
 def report(request,id):
-    get = lambda node_id: MagicNode.objects.get(pk=node_id)
-    try:
-        node = get(id)
-    except:
-        node = MagicNode.get_first_root_node()
-
-    if node.is_root():
-        node = node.get_first_child()
+    node = MagicNode.objects.get(id=node_id)
 
     children = node.get_children()
     parent = node.get_parent()
@@ -150,6 +144,9 @@ def topic_tree(request,id):
         request.session['node_id'] = node.id
         request.session['node_name'] = node.desc
 
+    sub = Subscription.objects.filter(user = request.user)
+    sub_in = [s.area for s in sub]
+
     return render(request,'topic_tree.html',
                     {'node':node,
                      'children':children,
@@ -160,6 +157,7 @@ def topic_tree(request,id):
                      't1':p1,
                      't2':p2,
                      't3':p3,
+                     'sub':sub_in,
                      })
 
 def user2expert(user):

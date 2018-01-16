@@ -4,6 +4,8 @@ from django.urls import re_path
 from . import views
 
 urlpatterns = [
+    path('report3/<int:sub_id>/<int:node_id>/', views.report3),
+
     path('col1/<int:id>/<int:line_id>/', views.col1),
     path('col2/<int:id>/<int:line_id>/', views.col2),
 
@@ -12,6 +14,9 @@ urlpatterns = [
 
     path('pub/<int:id>/', views.pub),
     path('unpub/<int:id>/', views.unpub),
+
+    path('sub/<int:id>/', views.sub),
+    path('unsub/<int:id>/', views.unsub),
 
     path('rename/<int:id>/', views.rename),
 

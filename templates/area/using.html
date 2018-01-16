@@ -15,6 +15,14 @@
         {{a}}
         {% if a == area %}</b>{% endif %}
       </a>
+      {% if a in sub %}
+      <a href="/area/unsub/{{a.id}}/" title="subcribed/click to change"><span class="glyphicon glyphicon-heart"></span>
+      {% else %}
+      <a href="/area/sub/{{a.id}}/" title="unsubcribed/click to change"><span class="glyphicon glyphicon-off"></span>
+      {% endif %}
+  </a>
+
+
       <br>
       {% endfor %}
       <h3>{% trans 'Not mine:'%}</h3>
@@ -24,6 +32,15 @@
         {{a}} ( {{a.user}} )
         {% if a == area %}</b>{% endif %}
       </a>
+
+      {% if a in sub %}
+      <a href="/area/unsub/{{a.id}}/" title="subcribed/click to change"><span class="glyphicon glyphicon-heart"></span>
+      {% else %}
+      <a href="/area/sub/{{a.id}}/" title="unsubcribed/click to change"><span class="glyphicon glyphicon-off" ></span>
+      {% endif %}
+      </a>
+
+
       <br>
       {% endfor %}
 

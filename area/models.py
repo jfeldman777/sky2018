@@ -8,7 +8,7 @@ from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 class Area(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    name = models.CharField(max_length = 30)
+    name = models.CharField(max_length = 50)
     is_published = models.BooleanField(default = False)
     root = models.ForeignKey(MagicNode,on_delete=models.CASCADE)
 
@@ -23,3 +23,11 @@ class AreaPlus(models.Model):
 
     def __str__(self):
         return self.node.desc
+
+class Subscription(models.Model):
+    area = models.ForeignKey(Area,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def __str__(self):
+        a = Area.objects.get(id=self.area_id)
+        return a.name

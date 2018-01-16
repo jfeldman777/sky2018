@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
-from .models import Area, AreaPlus
+from .models import Area, AreaPlus, Subscription
 from .forms import RenameForm
 from sky.models import MagicNode, Interest
 
@@ -159,11 +159,14 @@ def add(request,area_id):
 def using_areas(request):
     my_areas = Area.objects.filter(user = request.user)
     areas = Area.objects.filter(is_published = True).exclude(user = request.user)
+    sub = Subscription.objects.filter(user = request.user)
+    sub_in = [s.area for s in sub]
 
     return render(request,'area/using.html',
         {
             'my_areas':my_areas,
             'areas':areas,
+            'sub':sub_in,
         })
 
 def my_bag(area):
@@ -183,6 +186,16 @@ def my_bag(area):
                 x2 = 'plus'
             xx.append((q.node, x1, x2, q.id))
     return xx
+
+def sub(request,id):
+    area = Subscription(user = request.user, area_id = id)
+    area.save()
+    return using_areas(request)
+
+def unsub(request,id):
+    area = Subscription.objects.get(user=request.user, area_id=id)
+    area.delete()
+    return using_areas(request)
 
 def pub(request,id):
     area = Area.objects.get(id=id)
@@ -216,13 +229,7 @@ def bag(request,id):
             'area':area,
         })
 
-
-def report2(request,id):
-    my_areas = Area.objects.filter(user = request.user)
-    areas = Area.objects.filter(is_published = True).exclude(user = request.user)
-
-    area = Area.objects.get(id=id)
-
+def scan_area(area,count,user):
     lt_plus = [area.root]
     qq_tree_plus = AreaPlus.objects.filter(area=area,alone=False,minus=False)
     if qq_tree_plus:
@@ -236,7 +243,6 @@ def report2(request,id):
         lt_minus += [p.node for p in qq_tree_minus]
 
     clean_list(lt_minus)
-#################################################################################
     ln_plus = []
     qq_node_plus = AreaPlus.objects.filter(area=area,alone=True,minus=False)
     if qq_node_plus:
@@ -247,14 +253,50 @@ def report2(request,id):
     if qq_node_minus:
         ln_minus += [p.node for p in qq_node_minus]
 
-
-    count = [0]*6
-    tree_count2(request.user,count,ln_plus,lt_plus,lt_minus,ln_minus)
+    tree_count2(user,count,ln_plus,lt_plus,lt_minus,ln_minus)
     try:
-        next_count2(request.user,ln_plus,lt_plus,lt_minus,ln_minus)
+        next_count2(user,ln_plus,lt_plus,lt_minus,ln_minus)
         next = MagicNode.get_first_root_node()
     except Exception as e:
         next = e.args[0]
+
+    return next
+
+
+def report3(request,sub_id,node_id):
+    node = MagicNode.objects.get(id=node_id)
+    children = node.get_children()
+    parent = node.get_parent()
+    siblings = node.get_siblings()
+    area = Area.objects.get(id=sub_id)
+
+    count = [0]*6
+    next = scan_area(area,count,request.user)
+
+    return render(request,'report.html',
+                {'node':node,
+                 'children':children,
+                 'parent':parent,
+                 'siblings':siblings,
+                 'count0':count[0],
+                 'count1':count[1],
+                 'count2':count[2],
+                 'count3':count[3],
+                 'count4':count[4],
+                 'count5':count[5],
+                 'next':next,
+                 })
+
+def report2(request,id):
+    my_areas = Area.objects.filter(user = request.user)
+    areas = Area.objects.filter(is_published = True).exclude(user = request.user)
+    area = Area.objects.get(id=id)
+
+    count = [0]*6
+    next = scan_area(area,count,request.user)
+
+    sub = Subscription.objects.filter(user = request.user)
+    sub_in = [s.area for s in sub]
     return render(request,'area/using.html',
         {
             'my_areas':my_areas,
@@ -267,6 +309,7 @@ def report2(request,id):
              'count4':count[4],
              'count5':count[5],
              'next':next,
+             'sub':sub_in,
              })
 
 def delete_area(request,id):

@@ -57,7 +57,10 @@ var toggle = function(me,you){
 </li>
 </ul>
 
-<a href="/report/{{node.id}}/">{% trans 'Personal report' %}</a>
+<a href="/report/{{node.id}}/">{% trans 'From this topic' %}</a><br>
+{% for s in sub %}
+<a href="/area/report3/{{s.id}}/{{node.id}}/">{{s}}</a><br>
+{% endfor %}
 <script>
 hide({{t1}});
 hide({{t2}});
