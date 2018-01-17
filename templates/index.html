@@ -15,7 +15,7 @@
 {% if news %}
   <h2>{% trans 'News' %}</h2>
   <h3>{{news.title}}</h3>
-  {{news.description}}<br>
+  {{news.description|linebreaks }}<br>
   <small>{{news.updated_at}}</small>
   <br>
   {% if news.figure %}
