@@ -259,6 +259,9 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
+def upgrade():
+    pass
+
 def index(request):
     nc = 0
     try:
