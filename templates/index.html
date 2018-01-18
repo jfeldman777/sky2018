@@ -21,5 +21,8 @@
   {% if news.figure %}
   <img src="{{news.figure.url}}"/>
   {% endif %}
+{% if more %}
+<a href="/news/">{% trans 'More news' %}</a>
+{% endif %}
 {% endif %}
 {% endblock %}

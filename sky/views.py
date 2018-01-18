@@ -260,12 +260,16 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 def index(request):
+    nc = 0
     try:
         news = NewsRecord.objects.all()[:1].get()
+        nc = NewsRecord.objects.all().count()
     except:
         news = None
+
     return render(request,'index.html',
-        {'news':news
+        {'news':news,
+        'more':(nc>1),
         })
 
 def news(request):
