@@ -1,0 +1,15 @@
+{% extends "base1.html" %}
+{% load i18n %}
+
+{% block content %}
+<h3>
+{% trans 'Last 25 changes fron now backwards' %}
+</h3>
+<ol>
+{% for e in log_entries %}
+<li>
+<a href="/topic_tree/{{e.object_id}}/">{{e}}</a> <br>
+</li>
+{% endfor %}
+</ol>
+{% endblock %}

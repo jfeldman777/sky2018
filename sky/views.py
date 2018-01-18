@@ -259,8 +259,13 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
-def upgrade():
-    pass
+from django.contrib.contenttypes.models import ContentType
+
+def upgrade(request):
+    ct = ContentType.objects.get(app_label='sky',model='magicnode')
+    return render(request, 'upgrade.html',
+        {'log_entries': ct.logentry_set.all()[:25]}
+        )
 
 def index(request):
     nc = 0
