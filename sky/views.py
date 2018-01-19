@@ -76,7 +76,7 @@ def tree_count(count, node, user):
 
 
 def report(request,id):
-    node = MagicNode.objects.get(id=node_id)
+    node = MagicNode.objects.get(id=id)
 
     children = node.get_children()
     parent = node.get_parent()

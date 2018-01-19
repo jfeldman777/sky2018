@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-06 14:48+0300\n"
+"POT-Creation-Date: 2018-01-19 04:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,19 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\sky\forms.py:7
+#: .\area\forms.py:6
+msgid "new name"
+msgstr ""
+
+#: .\sky\forms.py:7 .\templates\area\using.html:66 .\templates\report.html:54
 msgid "I like the topic"
 msgstr "Мне нравится эта тема"
 
-#: .\sky\forms.py:8
+#: .\sky\forms.py:8 .\templates\area\using.html:71 .\templates\report.html:59
 msgid "I like the content"
 msgstr "Мне нравится это содержание"
 
-#: .\sky\forms.py:9
+#: .\sky\forms.py:9 .\templates\area\using.html:76 .\templates\report.html:64
 msgid "I am an expert"
 msgstr "Я эксперт в этом вопросе"
 
@@ -72,6 +76,105 @@ msgstr "Рисунок"
 msgid "Text"
 msgstr "Текст"
 
+#: .\templates\area\admin.html:6 .\templates\area\index3.html:6
+#: .\templates\area\using.html:6 .\templates\base1.html:66
+#: .\templates\index.html:6
+msgid "Tree of Knowledge"
+msgstr "Дерево Знаний"
+
+#: .\templates\area\admin.html:6 .\templates\area\index3.html:6
+#: .\templates\area\using.html:6 .\templates\index.html:6
+msgid "draft"
+msgstr "черновик"
+
+#: .\templates\area\admin.html:10 .\templates\area\using.html:10
+msgid "My areas"
+msgstr "Мои области"
+
+#: .\templates\area\admin.html:41
+msgid "Node selected"
+msgstr "Текущий узел"
+
+#: .\templates\area\admin.html:45
+msgid "Create new area from the node"
+msgstr "Создать область из этого узла"
+
+#: .\templates\area\admin.html:49
+msgid "Add node to selected area"
+msgstr "Использовать узел в описании области"
+
+#: .\templates\area\admin.html:57
+msgid "Contents"
+msgstr "Содержание"
+
+#: .\templates\area\admin.html:62
+msgid "Nodes"
+msgstr "Узлы"
+
+#: .\templates\area\admin.html:63
+msgid "root of subtree"
+msgstr "корень поддерева"
+
+#: .\templates\area\admin.html:64
+msgid "plus/minus"
+msgstr "плюс/минус"
+
+#: .\templates\area\admin.html:65
+msgid "delete line"
+msgstr "удалить строку"
+
+#: .\templates\area\base3.html:41 .\templates\base1.html:48
+msgid "Home"
+msgstr "Домой"
+
+#: .\templates\area\base3.html:47
+msgid "Areas Admin"
+msgstr "Управление областями"
+
+#: .\templates\area\base3.html:53
+msgid "Using Areas"
+msgstr "Использование областей"
+
+#: .\templates\area\index3.html:8
+msgid "Areas"
+msgstr "Области"
+
+#: .\templates\area\rename.html:6
+msgid "Rename area"
+msgstr "Переименовать область"
+
+#: .\templates\area\using.html:28
+msgid "Not mine:"
+msgstr "Не мое:"
+
+#: .\templates\area\using.html:48
+msgid "List of areas is empty."
+msgstr "Список областей пуст."
+
+#: .\templates\area\using.html:54 .\templates\report.html:42
+msgid "Report"
+msgstr "Отчет"
+
+#: .\templates\area\using.html:59 .\templates\report.html:47
+msgid "Mark"
+msgstr "Флажок"
+
+#: .\templates\area\using.html:60 .\templates\interest.html:29
+#: .\templates\interest.html:40 .\templates\interest.html:51
+#: .\templates\report.html:48
+msgid "YES"
+msgstr "ДА"
+
+#: .\templates\area\using.html:61 .\templates\interest.html:32
+#: .\templates\interest.html:43 .\templates\interest.html:54
+#: .\templates\report.html:49
+msgid "NO"
+msgstr "НЕТ"
+
+#: .\templates\area\using.html:81 .\templates\report.html:69
+msgid "Next topic recommended"
+msgstr "Рекомендованная тема"
+
 #: .\templates\base1.html:28
 msgid "LOGOUT"
 msgstr "Выйти"
@@ -79,10 +182,6 @@ msgstr "Выйти"
 #: .\templates\base1.html:33
 msgid "Change Password"
 msgstr "Изменить пароль"
-
-#: .\templates\base1.html:48
-msgid "Home"
-msgstr "Домой"
 
 #: .\templates\base1.html:54 .\templates\index.html:16 .\templates\news.html:6
 msgid "News"
@@ -92,29 +191,25 @@ msgstr "Новости"
 msgid "Forum"
 msgstr "Форум"
 
-#: .\templates\base1.html:66 .\templates\index.html:6
-msgid "Tree of Knowledge"
-msgstr "Дерево Знаний"
-
 #: .\templates\base1.html:71
 msgid "Topic Search"
 msgstr "Поиск по темам"
 
-#: .\templates\base1.html:77
+#: .\templates\base1.html:76
+msgid "Log of changes"
+msgstr "Журнал изменений"
+
+#: .\templates\base1.html:83
 msgid "Interest Search"
 msgstr "Поиск по интересам"
 
-#: .\templates\base1.html:83
-msgid "Expert Search"
-msgstr "Поиск по экспертам"
+#: .\templates\base1.html:89
+msgid "Area work"
+msgstr "Области"
 
 #: .\templates\expert_search.html:6
 msgid "Expert search"
 msgstr "Поиск по экспертам"
-
-#: .\templates\index.html:6
-msgid "draft"
-msgstr "черновик"
 
 #: .\templates\index.html:9
 msgid "for new visitors"
@@ -123,6 +218,10 @@ msgstr "Для новых посетителей"
 #: .\templates\index.html:11
 msgid "Welcome"
 msgstr "Добро пожаловать"
+
+#: .\templates\index.html:25
+msgid "More news"
+msgstr "Больше новостей"
 
 #: .\templates\interest.html:2
 msgid "Click YES/NO to toggle it"
@@ -138,16 +237,6 @@ msgstr "Вам нравится эта тема?"
 msgid "click to change"
 msgstr "кликните чтобы изменить"
 
-#: .\templates\interest.html:29 .\templates\interest.html:40
-#: .\templates\interest.html:51
-msgid "YES"
-msgstr "ДА"
-
-#: .\templates\interest.html:32 .\templates\interest.html:43
-#: .\templates\interest.html:54
-msgid "NO"
-msgstr "НЕТ"
-
 #: .\templates\interest.html:37
 msgid "Do you like the content?"
 msgstr "Вам нравится это содержание?"
@@ -155,6 +244,10 @@ msgstr "Вам нравится это содержание?"
 #: .\templates\interest.html:48
 msgid "Are you an expert in this topic?"
 msgstr "Чувствуете себя экспертом в данной теме?"
+
+#: .\templates\interest.html:60
+msgid "From this topic"
+msgstr "Поддерево тем"
 
 #: .\templates\interest_search.html:6
 msgid "Interest search"
@@ -188,13 +281,13 @@ msgstr "Ладно, пошли домой"
 msgid "(current)"
 msgstr "(текущее)"
 
+#: .\templates\report.html:7 .\templates\topic_tree.html:7
+msgid "Navigator"
+msgstr "Навигатор"
+
 #: .\templates\topic_search.html:6
 msgid "Name search"
 msgstr "Поиск по имени"
-
-#: .\templates\topic_tree.html:7
-msgid "Navigator"
-msgstr "Навигатор"
 
 #: .\templates\topic_tree.html:47
 msgid "Pre-conditions"
@@ -211,6 +304,13 @@ msgstr "Сайты"
 #: .\templates\topic_tree.html:91
 msgid "Videos"
 msgstr "Видео"
+
+#: .\templates\upgrade.html:6
+msgid "Last 25 changes fron now backwards"
+msgstr "Последние 25 изменений от текущего момента назад"
+
+#~ msgid "Expert Search"
+#~ msgstr "Поиск по экспертам"
 
 #~ msgid "Topic Tree"
 #~ msgstr "Дерево тем"
