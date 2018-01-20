@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-19 04:41+0300\n"
+"POT-Creation-Date: 2018-01-20 13:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: .\area\forms.py:6
 msgid "new name"
-msgstr ""
+msgstr "новое имя"
 
 #: .\sky\forms.py:7 .\templates\area\using.html:66 .\templates\report.html:54
 msgid "I like the topic"
@@ -78,12 +78,11 @@ msgstr "Текст"
 
 #: .\templates\area\admin.html:6 .\templates\area\index3.html:6
 #: .\templates\area\using.html:6 .\templates\base1.html:66
-#: .\templates\index.html:6
 msgid "Tree of Knowledge"
 msgstr "Дерево Знаний"
 
 #: .\templates\area\admin.html:6 .\templates\area\index3.html:6
-#: .\templates\area\using.html:6 .\templates\index.html:6
+#: .\templates\area\using.html:6
 msgid "draft"
 msgstr "черновик"
 
@@ -183,7 +182,7 @@ msgstr "Выйти"
 msgid "Change Password"
 msgstr "Изменить пароль"
 
-#: .\templates\base1.html:54 .\templates\index.html:16 .\templates\news.html:6
+#: .\templates\base1.html:54 .\templates\index.html:13 .\templates\news.html:6
 msgid "News"
 msgstr "Новости"
 
@@ -191,19 +190,23 @@ msgstr "Новости"
 msgid "Forum"
 msgstr "Форум"
 
-#: .\templates\base1.html:71
+#: .\templates\base1.html:72 .\templates\tree.html:5
+msgid "Tree View"
+msgstr "Все Дерево"
+
+#: .\templates\base1.html:79
 msgid "Topic Search"
 msgstr "Поиск по темам"
 
-#: .\templates\base1.html:76
+#: .\templates\base1.html:84
 msgid "Log of changes"
 msgstr "Журнал изменений"
 
-#: .\templates\base1.html:83
+#: .\templates\base1.html:91
 msgid "Interest Search"
 msgstr "Поиск по интересам"
 
-#: .\templates\base1.html:89
+#: .\templates\base1.html:97
 msgid "Area work"
 msgstr "Области"
 
@@ -211,15 +214,15 @@ msgstr "Области"
 msgid "Expert search"
 msgstr "Поиск по экспертам"
 
-#: .\templates\index.html:9
+#: .\templates\index.html:6
 msgid "for new visitors"
 msgstr "Для новых посетителей"
 
-#: .\templates\index.html:11
+#: .\templates\index.html:8
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: .\templates\index.html:25
+#: .\templates\index.html:22
 msgid "More news"
 msgstr "Больше новостей"
 
@@ -281,7 +284,7 @@ msgstr "Ладно, пошли домой"
 msgid "(current)"
 msgstr "(текущее)"
 
-#: .\templates\report.html:7 .\templates\topic_tree.html:7
+#: .\templates\report.html:7 .\templates\topic_tree.html:8
 msgid "Navigator"
 msgstr "Навигатор"
 
@@ -289,19 +292,25 @@ msgstr "Навигатор"
 msgid "Name search"
 msgstr "Поиск по имени"
 
-#: .\templates\topic_tree.html:47
+#: .\templates\topic_tree.html:7
+#, fuzzy
+#| msgid "Topic Tree"
+msgid "The Tree"
+msgstr "Дерево тем"
+
+#: .\templates\topic_tree.html:48
 msgid "Pre-conditions"
 msgstr "Пред-условия"
 
-#: .\templates\topic_tree.html:76
+#: .\templates\topic_tree.html:77
 msgid "Friends"
 msgstr "Друзья"
 
-#: .\templates\topic_tree.html:84
+#: .\templates\topic_tree.html:85
 msgid "Sites"
 msgstr "Сайты"
 
-#: .\templates\topic_tree.html:91
+#: .\templates\topic_tree.html:92
 msgid "Videos"
 msgstr "Видео"
 
@@ -311,6 +320,3 @@ msgstr "Последние 25 изменений от текущего моме�
 
 #~ msgid "Expert Search"
 #~ msgstr "Поиск по экспертам"
-
-#~ msgid "Topic Tree"
-#~ msgstr "Дерево тем"

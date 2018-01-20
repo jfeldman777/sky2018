@@ -13,7 +13,16 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .forms import NameForm
 from django.http import JsonResponse
-# Create your views here.
+
+def tree(request,id):
+    node = MagicNode.objects.get(id=id)
+    p = node.get_parent()
+
+    annotated_list = MagicNode.get_annotated_list(parent=p)
+    return render(request,'tree.html',
+                    {'annotated_list':annotated_list,
+                     })
+
 def ajax(request, node, you):
     res = 0
     i,created = Interest.objects.get_or_create(topic = node, user = request.user)

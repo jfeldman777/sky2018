@@ -1,0 +1,19 @@
+{% extends "base1.html" %}
+{% load i18n %}
+
+{% block content %}
+<h3>{% trans 'Tree View' %}</h3>
+{% for item, info in annotated_list %}
+    {% if info.open %}
+        <ul><li>
+    {% else %}
+        </li><li>
+    {% endif %}
+<a href="/topic_tree/{{item.id}}/">
+    {{ item }}
+</a>
+    {% for close in info.close %}
+        </li></ul>
+    {% endfor %}
+{% endfor %}
+{% endblock %}

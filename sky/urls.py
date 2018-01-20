@@ -11,6 +11,7 @@ urlpatterns = [
 
     path('report/<int:id>/', views.report),
     path('topic_tree/<int:id>/', views.topic_tree),
+    path('tree/<int:id>/', views.tree),
 
     path('upgrade/', views.upgrade),
     path('news/', views.news),

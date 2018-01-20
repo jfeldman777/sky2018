@@ -4,6 +4,7 @@
 {% block content %}
 <div class="row">
   <div class="col-sm-4">
+    <a href="/tree/{{node.id}}/">{% trans 'Tree View' %}</a>
     <h2>{% trans 'Navigator' %}</h2>
     {% if parent %}
       <a href="/topic_tree/{{parent.id}}/">
