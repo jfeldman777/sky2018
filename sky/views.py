@@ -16,9 +16,7 @@ from django.http import JsonResponse
 
 def tree(request,id):
     node = MagicNode.objects.get(id=id)
-    p = node.get_parent()
-
-    annotated_list = MagicNode.get_annotated_list(parent=p)
+    annotated_list = MagicNode.get_annotated_list(parent=node)
     return render(request,'tree.html',
                     {'annotated_list':annotated_list,
                      })
