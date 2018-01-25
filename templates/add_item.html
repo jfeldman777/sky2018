@@ -1,0 +1,17 @@
+{% extends 'base2.html' %}
+{% load i18n %}
+{% block content %}
+
+{% if user.is_superuser %}
+<h2>
+{% trans 'Create item' %}</h2>
+<form method="post" action=''>
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Submit" />
+</form>
+{% trans 'old node' %}:{{old_node}}:{% trans 'location' %}:{{location}}
+{% else %}
+Who are you, stranger? No trespassing.
+{% endif %}
+{% endblock %}

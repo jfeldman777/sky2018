@@ -28,3 +28,7 @@ class SignUpForm(UserCreationForm):
 
 class NameForm(forms.Form):
     name = forms.CharField(label=_('name to find'), max_length=100)
+
+class AddItemForm(forms.Form):
+    name = forms.CharField(label=_('new item name'), max_length=100)
+    location = forms.IntegerField(widget=forms.HiddenInput())

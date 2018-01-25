@@ -25,7 +25,8 @@
         <li>
           {{x}}
           {% if user.is_superuser %}
-          <a href="#" title='edit content'>
+          <a href="/admin/sky/magicnode/{{x.id}}/change/"
+          title='edit content' target="a1">
    <span class="glyphicon glyphicon-pencil"></span>
           </a>
           {% endif %}

@@ -13,6 +13,9 @@ urlpatterns = [
     path('topic_tree/<int:id>/', views.topic_tree),
     path('tree/<int:id>/', views.tree),
 
+    path('add_item/<int:id>/<int:location>/', views.add_item),
+
+
     path('upgrade/', views.upgrade),
     path('news/', views.news),
     re_path('^', views.index, name='index'),

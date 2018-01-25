@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from .forms import SignUpForm
+from .forms import SignUpForm, AddItemForm
 from .models import NewsRecord, MagicNode, Interest
 from area.models import Subscription
 from django.contrib.auth.models import User
@@ -13,6 +13,39 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .forms import NameForm
 from django.http import JsonResponse
+
+def add_item(request,id,location):
+    old_node = MagicNode.objects.get(id=id)
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = AddItemForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            location = int(form.cleaned_data['location'])
+
+            new_node = MagicNode(desc=name)
+            if location == 1:
+                old_node.add_sibling('left',instance=new_node)
+            elif location == 2:
+                old_node.add_sibling('right',instance=new_node)
+            else:
+                old_node.add_child(instance=new_node)
+
+            return msg(request,'child created')
+        else:
+            return msg(request,'cannnot create child')
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = AddItemForm(initial={'location':location})
+
+        return render(request, 'add_item.html',
+            {'form': form,
+            'old_node':old_node,
+            'location':location,
+            })
+
+
 
 def tree(request,id):
     node = MagicNode.objects.get(id=id)
