@@ -151,8 +151,10 @@ def topic_tree(request,id):
         request.session['node_id'] = node.id
         request.session['node_name'] = node.desc
 
-    sub = Subscription.objects.filter(user = request.user)
-    sub_in = [s.area for s in sub]
+    sub_in = []
+    if not request.user.is_anonymous:
+        sub = Subscription.objects.filter(user = request.user)
+        sub_in = [s.area for s in sub]
 
     return render(request,'topic_tree.html',
                     {'node':node,

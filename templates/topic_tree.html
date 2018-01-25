@@ -24,6 +24,11 @@
         {% else %}
         <li>
           {{x}}
+          {% if user.is_superuser %}
+          <a href="#" title='edit content'>
+   <span class="glyphicon glyphicon-pencil"></span>
+          </a>
+          {% endif %}
           <ul>
             {% for t in children %}
               <li>
