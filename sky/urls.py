@@ -10,7 +10,7 @@ urlpatterns = [
     path('topic_search/', views.topic_search),
 
     path('report/<int:id>/', views.report),
-    path('topic_tree/<int:id>/', views.topic_tree),
+    path('topic_tree/<int:id>/', views.topic_tree),  
     path('tree/<int:id>/', views.tree),
 
     path('add_item/<int:id>/<int:location>/', views.add_item),

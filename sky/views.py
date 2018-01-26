@@ -14,6 +14,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import NameForm
 from django.http import JsonResponse
 
+def total():
+    return MagicNode.objects.count()
+
 def add_item(request,id,location):
     old_node = MagicNode.objects.get(id=id)
     if request.method == 'POST':
@@ -44,8 +47,6 @@ def add_item(request,id,location):
             'old_node':old_node,
             'location':location,
             })
-
-
 
 def tree(request,id):
     node = MagicNode.objects.get(id=id)
@@ -310,6 +311,7 @@ def upgrade(request):
         )
 
 def index(request):
+    n = total()
     nc = 0
     try:
         news = NewsRecord.objects.all()[:1].get()
@@ -320,6 +322,7 @@ def index(request):
     return render(request,'index.html',
         {'news':news,
         'more':(nc>1),
+        'total':n
         })
 
 def news(request):
