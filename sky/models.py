@@ -73,6 +73,11 @@ class MagicNode(AL_Node):
     def __str__(self):
         return self.desc
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    node_last_visited = models.ForeignKey(MagicNode,on_delete=models.CASCADE, default=1)
+    visited_at = models.DateTimeField(auto_now=True)
+
 class Interest(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     topic = models.ForeignKey(MagicNode,on_delete=models.CASCADE)

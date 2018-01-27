@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, AddItemForm
-from .models import NewsRecord, MagicNode, Interest
+from .models import NewsRecord, MagicNode, Interest, Profile
 from area.models import Subscription
 from django.contrib.auth.models import User
 
@@ -142,6 +142,8 @@ def report(request,id):
                      })
 
 def topic_tree(request,id):
+    current,c = Profile.objects.get_or_create(user = request.user)
+
     pre_nodes = []
     get = lambda node_id: MagicNode.objects.get(pk=node_id)
     get_by_name = lambda name: MagicNode.objects.filter(desc = name)
@@ -189,6 +191,9 @@ def topic_tree(request,id):
     if not request.user.is_anonymous:
         sub = Subscription.objects.filter(user = request.user)
         sub_in = [s.area for s in sub]
+
+    current.node_last_visited = node
+    current.save()
 
     return render(request,'topic_tree.html',
                     {'node':node,
@@ -311,6 +316,11 @@ def upgrade(request):
         )
 
 def index(request):
+    last_visited = None
+    if not request.user.is_anonymous:
+        profile,c = Profile.objects.get_or_create(user=request.user)
+        last_visited = profile.node_last_visited
+
     n = total()
     nc = 0
     try:
@@ -322,7 +332,8 @@ def index(request):
     return render(request,'index.html',
         {'news':news,
         'more':(nc>1),
-        'total':n
+        'total':n,
+        'last_visited':last_visited,
         })
 
 def news(request):
