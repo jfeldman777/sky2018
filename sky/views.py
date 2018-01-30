@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from .forms import SignUpForm, AddItemForm, ChangeItemForm
+from .forms import SignUpForm, AddItemForm, ChangeItemForm, ChangeTxtForm
 from .models import NewsRecord, MagicNode, Interest, Profile
 from area.models import Subscription
 from django.contrib.auth.models import User
@@ -23,6 +23,40 @@ def topic_by_name(request, name):
         return topic_tree(request,node.id)
     else:
         return msg(request, 'node not found:'+name+'?')
+
+def change_txt(request,id):
+    node = MagicNode.objects.get(id=id)
+    if request.method == 'POST':
+        form = ChangeTxtForm(request.POST)
+        if form.is_valid():
+            node.desc = form.cleaned_data['desc']
+            node.text = form.cleaned_data['text']
+            node.sites = form.cleaned_data['sites']
+            node.videos = form.cleaned_data['videos']
+            node.pre_nodes = form.cleaned_data['pre_nodes']
+            node.friends = form.cleaned_data['friends']
+            node.sib_order = form.cleaned_data['sib_order']
+            node.save()
+            return msg(request,'change request done')
+        else:
+            return msg(request,'change request failed')
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = ChangeTxtForm(
+            initial={
+                'desc':node.desc,
+                'text':node.text,
+                'sites':node.sites,
+                'videos':node.videos,
+                'pre_nodes':node.pre_nodes,
+                'friends':node.friends,
+                'sib_order':node.sib_order,
+                }
+                )
+
+        return render(request, 'change_item.html',
+            {'form': form,
+            })
 
 def change_item(request,id):
     node = MagicNode.objects.get(id=id)
@@ -67,6 +101,7 @@ def change_item(request,id):
         return render(request, 'change_item.html',
             {'form': form,
             })
+
 
 def add_item(request,id,location):
     old_node = MagicNode.objects.get(id=id)

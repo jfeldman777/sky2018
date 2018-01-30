@@ -17,7 +17,7 @@ urlpatterns = [
 
     path('add_item/<int:id>/<int:location>/', views.add_item),
     path('change_item/<int:id>/', views.change_item),
-
+    path('change_txt/<int:id>/', views.change_txt),
 
     path('upgrade/', views.upgrade),
     path('news/', views.news),

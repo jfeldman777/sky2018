@@ -40,3 +40,8 @@ class ChangeItemForm(ModelForm):
     class Meta:
         model = MagicNode
         fields = '__all__'
+
+class ChangeTxtForm(ModelForm):
+    class Meta:
+        model = MagicNode
+        fields = ['desc', 'text', 'videos','sites','pre_nodes','friends','sib_order']

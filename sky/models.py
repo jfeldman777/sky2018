@@ -30,10 +30,6 @@ class MagicNode(AL_Node):
                                null=True,
                                db_index=True,on_delete=models.CASCADE)
     sib_order = models.PositiveIntegerField()
-    #friends = models.ManyToManyField('self',
-    #                           blank=True,
-    #                           )
-
     desc = models.CharField(max_length=255)
     figure = models.ImageField(upload_to='uploads/%Y/%m/%d',
                                blank=True,
