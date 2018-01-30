@@ -19,6 +19,9 @@ urlpatterns = [
     path('change_item/<int:id>/', views.change_item),
     path('change_txt/<int:id>/', views.change_txt),
 
+    path('change_video/<int:id>/', views.change_video),
+    path('change_figure/<int:id>/', views.change_figure),        
+
     path('upgrade/', views.upgrade),
     path('news/', views.news),
     re_path('^', views.index, name='index'),

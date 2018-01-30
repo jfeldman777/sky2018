@@ -45,3 +45,14 @@ class ChangeTxtForm(ModelForm):
     class Meta:
         model = MagicNode
         fields = ['desc', 'text', 'videos','sites','pre_nodes','friends','sib_order']
+
+
+class ChangeVideoForm(ModelForm):
+    class Meta:
+        model = MagicNode
+        fields = ['video']
+
+class ChangeFigureForm(ModelForm):
+    class Meta:
+        model = MagicNode
+        fields = ['figure']
