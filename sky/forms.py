@@ -3,6 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 
+from django.forms import ModelForm
+from .models import MagicNode
+
 class InterestForm(forms.Form):
     i_like_the_topic = forms.BooleanField(label=_("I like the topic"))
     i_like_the_content = forms.BooleanField(label=_("I like the content"))
@@ -32,3 +35,8 @@ class NameForm(forms.Form):
 class AddItemForm(forms.Form):
     name = forms.CharField(label=_('new item name'), max_length=100)
     location = forms.IntegerField(widget=forms.HiddenInput())
+
+class ChangeItemForm(ModelForm):
+    class Meta:
+        model = MagicNode
+        fields = '__all__'

@@ -30,9 +30,9 @@ class MagicNode(AL_Node):
                                null=True,
                                db_index=True,on_delete=models.CASCADE)
     sib_order = models.PositiveIntegerField()
-    friends = models.ManyToManyField('self',
-                               blank=True,
-                               )
+    #friends = models.ManyToManyField('self',
+    #                           blank=True,
+    #                           )
 
     desc = models.CharField(max_length=255)
     figure = models.ImageField(upload_to='uploads/%Y/%m/%d',
@@ -63,6 +63,14 @@ class MagicNode(AL_Node):
             )
 
     pre_nodes = ArrayField(
+                models.TextField(blank=True),
+                blank = True,
+                null=True,
+                size=5,
+
+            )
+
+    friends = ArrayField(
                 models.TextField(blank=True),
                 blank = True,
                 null=True,

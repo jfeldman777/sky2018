@@ -4,7 +4,7 @@
 {% block content %}
 {% trans 'topics' %}:{{total}}
 {% if not user.is_anonymous %}
-|{% trans 'last_visited' %}:
+::{% trans 'last_visited' %}:
 <a href="/topic_tree/{{last_visited.id}}/">{{last_visited}}</a>
 {% endif %}
 <h3><a href="http://hbtjournal.com/club/new2.html" target="help">

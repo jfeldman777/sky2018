@@ -25,7 +25,7 @@
         <li>
           {{x}}
           {% if user.is_superuser %}
-          <a href="/admin/sky/magicnode/{{x.id}}/change/"
+          <a href="/change_item/{{x.id}}/"
           title='edit content' target="a1">
    <span class="glyphicon glyphicon-pencil"></span>
           </a>
@@ -50,15 +50,13 @@
   </div>
 
   <div class="col-sm-8">
-    {% if pre_nodes %}
+    {% if node.pre_nodes %}
     <h3>{% trans 'Pre-conditions' %}</h3>
-    {% for x in pre_nodes %}
-    <a href="/topic_tree/{{x.id}}/">
+    {% for x in node.pre_nodes %}
+    <a href="/topic_by_name/{{x}}/">
       {{x}}</a>|
     {% endfor %}
     {% endif %}
-
-
 
     <h2>{{node}}
   </h2>
@@ -79,10 +77,10 @@
     </video>
     {% endif %}
 
-{% if friends %}
+{% if node.friends %}
     <h3>{% trans 'Friends' %}</h3>
-{% for x in friends %}
-<a href="/topic_tree/{{x.id}}/">
+{% for x in node.friends %}
+<a href="/topic_by_name/{{x}}/">
 {{ x }}
 </a><br>
 {% endfor %}

@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from .forms import SignUpForm, AddItemForm
+from .forms import SignUpForm, AddItemForm, ChangeItemForm
 from .models import NewsRecord, MagicNode, Interest, Profile
 from area.models import Subscription
 from django.contrib.auth.models import User
@@ -16,6 +16,57 @@ from django.http import JsonResponse
 
 def total():
     return MagicNode.objects.count()
+
+def topic_by_name(request, name):
+    node = MagicNode.objects.get(desc = name)
+    if node:
+        return topic_tree(request,node.id)
+    else:
+        return msg(request, 'node not found:'+name+'?')
+
+def change_item(request,id):
+    node = MagicNode.objects.get(id=id)
+    parent = node.parent
+    if request.method == 'POST':
+        form = ChangeItemForm(request.POST, request.FILES)
+        if form.is_valid():
+
+            node.parent = form.cleaned_data['parent']
+            node.desc = form.cleaned_data['desc']
+            node.text = form.cleaned_data['text']
+            node.sites = form.cleaned_data['sites']
+            node.videos = form.cleaned_data['videos']
+            node.pre_nodes = form.cleaned_data['pre_nodes']
+            node.friends = form.cleaned_data['friends']
+            node.sib_order = form.cleaned_data['sib_order']
+
+            node.video = form.cleaned_data['video']
+            node.figure = form.cleaned_data['figure']
+
+            node.save()
+            return msg(request,'change request done')
+        else:
+            return msg(request,'change request failed')
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = ChangeItemForm(
+            initial={
+                'parent':node.parent,
+                'desc':node.desc,
+                'text':node.text,
+                'sites':node.sites,
+                'videos':node.videos,
+                'pre_nodes':node.pre_nodes,
+                'friends':node.friends,
+                'sib_order':node.sib_order,
+                'video':node.video,
+                'figure':node.figure
+                }
+                )
+
+        return render(request, 'change_item.html',
+            {'form': form,
+            })
 
 def add_item(request,id,location):
     old_node = MagicNode.objects.get(id=id)
@@ -167,10 +218,6 @@ def topic_tree(request,id):
         children = node.get_children()
         parent = node.get_parent()
         siblings = node.get_siblings()
-        friends = list(node.friends.all())
-        if node.pre_nodes:
-            pre_nodes = [list(get_by_name(x))[0] for x in node.pre_nodes]
-
 
     except:
         children = []
@@ -186,22 +233,19 @@ def topic_tree(request,id):
     if node:
         request.session['node_id'] = node.id
         request.session['node_name'] = node.desc
+        current.node_last_visited = node
+        current.save()
 
     sub_in = []
     if not request.user.is_anonymous:
         sub = Subscription.objects.filter(user = request.user)
         sub_in = [s.area for s in sub]
 
-    current.node_last_visited = node
-    current.save()
-
     return render(request,'topic_tree.html',
                     {'node':node,
                      'children':children,
                      'parent':parent,
                      'siblings':siblings,
-                     'friends':friends,
-                     'pre_nodes':pre_nodes,
                      't1':p1,
                      't2':p2,
                      't3':p3,

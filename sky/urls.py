@@ -10,10 +10,13 @@ urlpatterns = [
     path('topic_search/', views.topic_search),
 
     path('report/<int:id>/', views.report),
-    path('topic_tree/<int:id>/', views.topic_tree),  
+    path('topic_tree/<int:id>/', views.topic_tree),
+    path('topic_by_name/<str:name>/', views.topic_by_name),
+
     path('tree/<int:id>/', views.tree),
 
     path('add_item/<int:id>/<int:location>/', views.add_item),
+    path('change_item/<int:id>/', views.change_item),
 
 
     path('upgrade/', views.upgrade),
