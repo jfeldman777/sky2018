@@ -111,7 +111,15 @@
 <a href="{{x}}" target="1">{{x}}</a><br>
 {% endfor %}
 {% endif %}
+{% endif %}
 
+{% if more_count > 0 or user.is_superuser %}
+
+<h3>
+<a href="/sea/more/{{node.id}}/" target="more">
+{% trans 'More information' %}
+</a>
+</h3>
 
 {% endif %}
 

@@ -8,6 +8,8 @@ from .models import NewsRecord, MagicNode, Interest, Profile
 from area.models import Subscription
 from django.contrib.auth.models import User
 
+from sea.models import Boat
+
 from collections import Counter
 from operator import itemgetter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -272,7 +274,11 @@ def report(request,id):
                      })
 
 def topic_tree(request,id):
-    current,c = Profile.objects.get_or_create(user = request.user)
+    more_count = Boat.objects.filter(node_id=id).count()
+
+    current = None
+    if not request.user.is_anonymous:
+        current,c = Profile.objects.get_or_create(user = request.user)
 
     pre_nodes = []
     get = lambda node_id: MagicNode.objects.get(pk=node_id)
@@ -312,8 +318,9 @@ def topic_tree(request,id):
     if node:
         request.session['node_id'] = node.id
         request.session['node_name'] = node.desc
-        current.node_last_visited = node
-        current.save()
+        if current:
+            current.node_last_visited = node
+            current.save()
 
     sub_in = []
     if not request.user.is_anonymous:
@@ -329,6 +336,7 @@ def topic_tree(request,id):
                      't2':p2,
                      't3':p3,
                      'sub':sub_in,
+                     'more_count':more_count,
                      })
 
 def user2expert(user):
