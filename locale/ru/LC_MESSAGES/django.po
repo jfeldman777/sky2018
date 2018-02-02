@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-20 13:29+0300\n"
+"POT-Creation-Date: 2018-02-02 23:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,41 +24,47 @@ msgstr ""
 msgid "new name"
 msgstr "новое имя"
 
-#: .\sky\forms.py:7 .\templates\area\using.html:66 .\templates\report.html:54
+#: .\sky\forms.py:10 .\templates\area\using.html:63 .\templates\report.html:54
 msgid "I like the topic"
 msgstr "Мне нравится эта тема"
 
-#: .\sky\forms.py:8 .\templates\area\using.html:71 .\templates\report.html:59
+#: .\sky\forms.py:11 .\templates\area\using.html:68 .\templates\report.html:59
 msgid "I like the content"
 msgstr "Мне нравится это содержание"
 
-#: .\sky\forms.py:9 .\templates\area\using.html:76 .\templates\report.html:64
+#: .\sky\forms.py:12 .\templates\area\using.html:73 .\templates\report.html:64
 msgid "I am an expert"
 msgstr "Я эксперт в этом вопросе"
 
-#: .\sky\forms.py:15 .\sky\forms.py:19
+#: .\sky\forms.py:18 .\sky\forms.py:22
 msgid "Optional."
 msgstr "Необязательно."
 
-#: .\sky\forms.py:16
+#: .\sky\forms.py:19
 msgid "First Name"
 msgstr "Имя"
 
-#: .\sky\forms.py:20
+#: .\sky\forms.py:23
 msgid "Last Name"
 msgstr "Фамилия"
 
-#: .\sky\forms.py:22
+#: .\sky\forms.py:25
 msgid "Required. Inform a valid email address."
 msgstr "Обязательно. Введите правильную электронную почту."
 
-#: .\sky\forms.py:23
+#: .\sky\forms.py:26
 msgid "Email"
 msgstr "Электронная почта"
 
-#: .\sky\forms.py:30
+#: .\sky\forms.py:33
 msgid "name to find"
 msgstr "искать по названию"
+
+#: .\sky\forms.py:36
+#, fuzzy
+#| msgid "new name"
+msgid "new item name"
+msgstr "новое имя"
 
 #: .\sky\models.py:11
 msgid "Title"
@@ -68,25 +74,36 @@ msgstr "Заголовок"
 msgid "Content"
 msgstr "Содержание"
 
-#: .\sky\models.py:21 .\sky\models.py:41
+#: .\sky\models.py:21 .\sky\models.py:37
 msgid "Figure"
 msgstr "Рисунок"
 
-#: .\sky\models.py:43
+#: .\sky\models.py:39
 msgid "Text"
 msgstr "Текст"
 
+#: .\templates\add_item.html:7
+msgid "Create item"
+msgstr ""
+
+#: .\templates\add_item.html:13
+msgid "old node"
+msgstr ""
+
+#: .\templates\add_item.html:13
+msgid "location"
+msgstr ""
+
 #: .\templates\area\admin.html:6 .\templates\area\index3.html:6
-#: .\templates\area\using.html:6 .\templates\base1.html:66
+#: .\templates\base1.html:66
 msgid "Tree of Knowledge"
 msgstr "Дерево Знаний"
 
 #: .\templates\area\admin.html:6 .\templates\area\index3.html:6
-#: .\templates\area\using.html:6
 msgid "draft"
 msgstr "черновик"
 
-#: .\templates\area\admin.html:10 .\templates\area\using.html:10
+#: .\templates\area\admin.html:10 .\templates\area\using.html:7
 msgid "My areas"
 msgstr "Мои области"
 
@@ -142,35 +159,35 @@ msgstr "Области"
 msgid "Rename area"
 msgstr "Переименовать область"
 
-#: .\templates\area\using.html:28
+#: .\templates\area\using.html:25
 msgid "Not mine:"
 msgstr "Не мое:"
 
-#: .\templates\area\using.html:48
+#: .\templates\area\using.html:45
 msgid "List of areas is empty."
 msgstr "Список областей пуст."
 
-#: .\templates\area\using.html:54 .\templates\report.html:42
+#: .\templates\area\using.html:51 .\templates\report.html:42
 msgid "Report"
 msgstr "Отчет"
 
-#: .\templates\area\using.html:59 .\templates\report.html:47
+#: .\templates\area\using.html:56 .\templates\report.html:47
 msgid "Mark"
 msgstr "Флажок"
 
-#: .\templates\area\using.html:60 .\templates\interest.html:29
-#: .\templates\interest.html:40 .\templates\interest.html:51
+#: .\templates\area\using.html:57 .\templates\interest.html:30
+#: .\templates\interest.html:46 .\templates\interest.html:61
 #: .\templates\report.html:48
 msgid "YES"
 msgstr "ДА"
 
-#: .\templates\area\using.html:61 .\templates\interest.html:32
-#: .\templates\interest.html:43 .\templates\interest.html:54
+#: .\templates\area\using.html:58 .\templates\interest.html:36
+#: .\templates\interest.html:51 .\templates\interest.html:67
 #: .\templates\report.html:49
 msgid "NO"
 msgstr "НЕТ"
 
-#: .\templates\area\using.html:81 .\templates\report.html:69
+#: .\templates\area\using.html:78 .\templates\report.html:69
 msgid "Next topic recommended"
 msgstr "Рекомендованная тема"
 
@@ -182,7 +199,7 @@ msgstr "Выйти"
 msgid "Change Password"
 msgstr "Изменить пароль"
 
-#: .\templates\base1.html:54 .\templates\index.html:13 .\templates\news.html:6
+#: .\templates\base1.html:54 .\templates\index.html:18 .\templates\news.html:6
 msgid "News"
 msgstr "Новости"
 
@@ -190,7 +207,7 @@ msgstr "Новости"
 msgid "Forum"
 msgstr "Форум"
 
-#: .\templates\base1.html:72 .\templates\tree.html:5
+#: .\templates\base1.html:72
 msgid "Tree View"
 msgstr "Все Дерево"
 
@@ -210,19 +227,39 @@ msgstr "Поиск по интересам"
 msgid "Area work"
 msgstr "Области"
 
+#: .\templates\change_figure.html:7
+msgid "Change figure"
+msgstr "Изменить рисунок"
+
+#: .\templates\change_item.html:7 .\templates\change_txt.html:7
+msgid "Change item"
+msgstr "Изменить все данные"
+
+#: .\templates\change_video.html:7
+msgid "Change video"
+msgstr "Изменить видео"
+
 #: .\templates\expert_search.html:6
 msgid "Expert search"
 msgstr "Поиск по экспертам"
 
-#: .\templates\index.html:6
+#: .\templates\index.html:5
+msgid "topics"
+msgstr "темы"
+
+#: .\templates\index.html:7
+msgid "last_visited"
+msgstr "последнее посещение"
+
+#: .\templates\index.html:11
 msgid "for new visitors"
 msgstr "Для новых посетителей"
 
-#: .\templates\index.html:8
+#: .\templates\index.html:13
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: .\templates\index.html:22
+#: .\templates\index.html:27
 msgid "More news"
 msgstr "Больше новостей"
 
@@ -234,23 +271,31 @@ msgstr "Кликните ДА/НЕТ чтобы изменить ответ"
 msgid "Do you like the topic?"
 msgstr "Вам нравится эта тема?"
 
-#: .\templates\interest.html:28 .\templates\interest.html:31
-#: .\templates\interest.html:39 .\templates\interest.html:42
-#: .\templates\interest.html:50 .\templates\interest.html:53
+#: .\templates\interest.html:28 .\templates\interest.html:34
+#: .\templates\interest.html:44 .\templates\interest.html:49
+#: .\templates\interest.html:59 .\templates\interest.html:65
 msgid "click to change"
 msgstr "кликните чтобы изменить"
 
-#: .\templates\interest.html:37
+#: .\templates\interest.html:42
 msgid "Do you like the content?"
 msgstr "Вам нравится это содержание?"
 
-#: .\templates\interest.html:48
+#: .\templates\interest.html:57
 msgid "Are you an expert in this topic?"
 msgstr "Чувствуете себя экспертом в данной теме?"
 
-#: .\templates\interest.html:60
-msgid "From this topic"
+#: .\templates\interest.html:74
+msgid "Analysis of your marks"
+msgstr "Анализ ваших пометок"
+
+#: .\templates\interest.html:75
+msgid "From this topic below"
 msgstr "Поддерево тем"
+
+#: .\templates\interest.html:76
+msgid "Subscriptions"
+msgstr "Подписки"
 
 #: .\templates\interest_search.html:6
 msgid "Interest search"
@@ -288,35 +333,48 @@ msgstr "(текущее)"
 msgid "Navigator"
 msgstr "Навигатор"
 
+#: .\templates\sea\add.html:7
+msgid "Create or edit item"
+msgstr "Создать или изменить параграф"
+
+#: .\templates\sea\more.html:6 .\templates\topic_tree.html:120
+msgid "More information"
+msgstr "Больше информации"
+
 #: .\templates\topic_search.html:6
 msgid "Name search"
 msgstr "Поиск по имени"
 
 #: .\templates\topic_tree.html:7
-#, fuzzy
-#| msgid "Topic Tree"
-msgid "The Tree"
-msgstr "Дерево тем"
+msgid "Subtree below"
+msgstr "Поддерево тем"
 
-#: .\templates\topic_tree.html:48
+#: .\templates\topic_tree.html:67
 msgid "Pre-conditions"
 msgstr "Пред-условия"
 
-#: .\templates\topic_tree.html:77
+#: .\templates\topic_tree.html:94
 msgid "Friends"
 msgstr "Друзья"
 
-#: .\templates\topic_tree.html:85
+#: .\templates\topic_tree.html:102
 msgid "Sites"
 msgstr "Сайты"
 
-#: .\templates\topic_tree.html:92
+#: .\templates\topic_tree.html:109
 msgid "Videos"
 msgstr "Видео"
+
+#: .\templates\tree.html:5
+msgid "Subtree"
+msgstr "Поддерево"
 
 #: .\templates\upgrade.html:6
 msgid "Last 25 changes fron now backwards"
 msgstr "Последние 25 изменений от текущего момента назад"
+
+#~ msgid "Analysis"
+#~ msgstr "Поддерево тем"
 
 #~ msgid "Expert Search"
 #~ msgstr "Поиск по экспертам"

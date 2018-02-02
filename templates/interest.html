@@ -71,8 +71,9 @@ var toggle = function(me,you){
   </b><br>
 </li>
 </ul>
-
-<a href="/report/{{node.id}}/">{% trans 'From this topic' %}</a><br>
+<h2>{% trans 'Analysis of your marks' %}  </h2>
+<a href="/report/{{node.id}}/">{% trans 'From this topic below' %}</a><br>
+<h3>{% trans 'Subscriptions' %}</h3>
 {% for s in sub %}
 <a href="/area/report3/{{s.id}}/{{node.id}}/">{{s}}</a><br>
 {% endfor %}

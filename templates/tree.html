@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block content %}
-<h3>{% trans 'Tree View' %}</h3>
+<h3>{% trans 'Subtree' %}</h3>
 {% for item, info in annotated_list %}
     {% if info.open %}
         <ul><li>
