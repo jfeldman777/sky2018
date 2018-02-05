@@ -18,6 +18,7 @@ django-cleanup==1.0.1
 django-contrib-comments==1.8.0
 django-crispy-forms==1.7.0
 django-easy-maps==0.9.3
+django-embed-video==1.1.2
 django-haystack==2.6.1
 django-js-asset==0.1.1
 django-machina==0.5.6
