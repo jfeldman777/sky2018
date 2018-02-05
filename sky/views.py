@@ -36,9 +36,12 @@ def change_txt(request,id):
             node.text = form.cleaned_data['text']
             node.sites = form.cleaned_data['sites']
             node.videos = form.cleaned_data['videos']
+            node.video = form.cleaned_data['video']
+
             node.pre_nodes = form.cleaned_data['pre_nodes']
             node.friends = form.cleaned_data['friends']
             node.sib_order = form.cleaned_data['sib_order']
+
             node.save()
             return msg(request,'change request done')
         else:
@@ -51,6 +54,7 @@ def change_txt(request,id):
                 'text':node.text,
                 'sites':node.sites,
                 'videos':node.videos,
+                'video':node.video,
                 'pre_nodes':node.pre_nodes,
                 'friends':node.friends,
                 'sib_order':node.sib_order,
@@ -73,6 +77,7 @@ def change_item(request,id):
             node.text = form.cleaned_data['text']
             node.sites = form.cleaned_data['sites']
             node.videos = form.cleaned_data['videos']
+
             node.pre_nodes = form.cleaned_data['pre_nodes']
             node.friends = form.cleaned_data['friends']
             node.sib_order = form.cleaned_data['sib_order']

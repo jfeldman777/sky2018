@@ -67,6 +67,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
 
     'treebeard',
+
+    'embed_video',
 ] + get_machina_apps()
 
 MIDDLEWARE = [

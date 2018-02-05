@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 from treebeard.al_tree import AL_Node
-
+from embed_video.fields import EmbedVideoField
 from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 class NewsRecord(models.Model):
@@ -41,6 +41,9 @@ class MagicNode(AL_Node):
 
     #video = models.FileField(upload_to='uploads/%Y/%m/%d',blank=True,
     #                null=True)
+    #video = models.URLField(null=True, blank=True)
+
+    video = EmbedVideoField(null=True)  # same like models.URLField(
 
     sites = ArrayField(
             models.TextField(blank=True),
