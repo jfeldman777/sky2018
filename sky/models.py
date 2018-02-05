@@ -39,8 +39,8 @@ class MagicNode(AL_Node):
             verbose_name=_("Text"),
             blank=True)
 
-    video = models.FileField(upload_to='uploads/%Y/%m/%d',blank=True,
-                    null=True)
+    #video = models.FileField(upload_to='uploads/%Y/%m/%d',blank=True,
+    #                null=True)
 
     sites = ArrayField(
             models.TextField(blank=True),

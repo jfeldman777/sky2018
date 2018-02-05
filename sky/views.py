@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, AddItemForm, ChangeFigureForm
-from .forms import ChangeItemForm, ChangeTxtForm, ChangeVideoForm
+from .forms import ChangeItemForm, ChangeTxtForm
 from .models import NewsRecord, MagicNode, Interest, Profile
 from area.models import Subscription
 from django.contrib.auth.models import User
@@ -124,28 +124,6 @@ def change_figure(request,id):
                 )
 
         return render(request, 'change_figure.html',
-            {'form': form,
-            })
-
-def change_video(request,id):
-    node = MagicNode.objects.get(id=id)
-    if request.method == 'POST':
-        form = ChangeVideoForm(request.POST, request.FILES)
-        if form.is_valid():
-            node.video = form.cleaned_data['video']
-            node.save()
-            return msg(request,'change request done')
-        else:
-            return msg(request,'change request failed')
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = ChangeVideoForm(
-            initial={
-                'video':node.video,
-                }
-                )
-
-        return render(request, 'change_video.html',
             {'form': form,
             })
 
