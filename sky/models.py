@@ -39,9 +39,7 @@ class MagicNode(AL_Node):
             verbose_name=_("Text"),
             blank=True)
 
-    #video = models.FileField(upload_to='uploads/%Y/%m/%d',blank=True,
-    #                null=True)
-    #video = models.URLField(null=True, blank=True)
+    next = models.CharField(max_length=255, null=True, blank=True)
 
     video = EmbedVideoField(null=True,blank=True)  # same like models.URLField(
 

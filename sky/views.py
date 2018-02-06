@@ -34,6 +34,7 @@ def change_txt(request,id):
         if form.is_valid():
             node.desc = form.cleaned_data['desc']
             node.text = form.cleaned_data['text']
+            node.next = form.cleaned_data['next']
             node.sites = form.cleaned_data['sites']
             node.videos = form.cleaned_data['videos']
             node.video = form.cleaned_data['video']
@@ -50,6 +51,7 @@ def change_txt(request,id):
     else:
         form = ChangeTxtForm(
             initial={
+                'next':node.next,
                 'desc':node.desc,
                 'text':node.text,
                 'sites':node.sites,
@@ -75,6 +77,8 @@ def change_item(request,id):
             node.parent = form.cleaned_data['parent']
             node.desc = form.cleaned_data['desc']
             node.text = form.cleaned_data['text']
+            node.next = form.cleaned_data['next']
+            
             node.sites = form.cleaned_data['sites']
             node.videos = form.cleaned_data['videos']
 
@@ -93,6 +97,7 @@ def change_item(request,id):
     else:
         form = ChangeItemForm(
             initial={
+                'next':node.next,
                 'parent':node.parent,
                 'desc':node.desc,
                 'text':node.text,

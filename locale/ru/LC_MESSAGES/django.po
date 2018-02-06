@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-02 23:20+0300\n"
+"POT-Creation-Date: 2018-02-06 15:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,10 +235,6 @@ msgstr "Изменить рисунок"
 msgid "Change item"
 msgstr "Изменить все данные"
 
-#: .\templates\change_video.html:7
-msgid "Change video"
-msgstr "Изменить видео"
-
 #: .\templates\expert_search.html:6
 msgid "Expert search"
 msgstr "Поиск по экспертам"
@@ -329,7 +325,7 @@ msgstr "Ладно, пошли домой"
 msgid "(current)"
 msgstr "(текущее)"
 
-#: .\templates\report.html:7 .\templates\topic_tree.html:8
+#: .\templates\report.html:7 .\templates\topic_tree.html:9
 msgid "Navigator"
 msgstr "Навигатор"
 
@@ -345,13 +341,17 @@ msgstr "Больше информации"
 msgid "Name search"
 msgstr "Поиск по имени"
 
-#: .\templates\topic_tree.html:7
+#: .\templates\topic_tree.html:8
 msgid "Subtree below"
 msgstr "Поддерево тем"
 
-#: .\templates\topic_tree.html:67
+#: .\templates\topic_tree.html:65
 msgid "Pre-conditions"
 msgstr "Пред-условия"
+
+#: .\templates\topic_tree.html:75
+msgid "Next"
+msgstr "Далее"
 
 #: .\templates\topic_tree.html:94
 msgid "Friends"
@@ -372,6 +372,9 @@ msgstr "Поддерево"
 #: .\templates\upgrade.html:6
 msgid "Last 25 changes fron now backwards"
 msgstr "Последние 25 изменений от текущего момента назад"
+
+#~ msgid "Change video"
+#~ msgstr "Изменить видео"
 
 #~ msgid "Analysis"
 #~ msgstr "Поддерево тем"
