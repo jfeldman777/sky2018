@@ -78,7 +78,7 @@ def change_item(request,id):
             node.desc = form.cleaned_data['desc']
             node.text = form.cleaned_data['text']
             node.next = form.cleaned_data['next']
-            
+
             node.sites = form.cleaned_data['sites']
             node.videos = form.cleaned_data['videos']
 
@@ -169,7 +169,10 @@ def add_item(request,id,location):
             })
 
 def tree(request,id):
-    node = MagicNode.objects.get(id=id)
+    node = MagicNode.get_first_root_node()
+    node = node.get_first_child()
+    if id!=0:
+        node = MagicNode.objects.get(id=id)
     annotated_list = MagicNode.get_annotated_list(parent=node)
     return render(request,'tree.html',
                     {'annotated_list':annotated_list,
