@@ -36,6 +36,10 @@ class AddItemForm(forms.Form):
     name = forms.CharField(label=_('new item name'), max_length=100)
     location = forms.IntegerField(widget=forms.HiddenInput())
 
+class MoveItemForm(forms.Form):
+    base_name = forms.CharField(label=_('base item name'), max_length=100)
+    location = forms.ChoiceField(choices=((1,'left'),(2,'right'),(3,'down')))
+
 class ChangeItemForm(ModelForm):
     class Meta:
         model = MagicNode

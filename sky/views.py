@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, AddItemForm, ChangeFigureForm
-from .forms import ChangeItemForm, ChangeTxtForm
+from .forms import ChangeItemForm, ChangeTxtForm, MoveItemForm
 from .models import NewsRecord, MagicNode, Interest, Profile
 from area.models import Subscription
 from django.contrib.auth.models import User
@@ -134,6 +134,35 @@ def change_figure(request,id):
                 )
 
         return render(request, 'change_figure.html',
+            {'form': form,
+            })
+
+def move_item(request,id):
+    node = MagicNode.objects.get(id=id)
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = MoveItemForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            base_name = form.cleaned_data['base_name']
+            location = int(form.cleaned_data['location'])
+
+            base_node = MagicNode.objects.get(desc=base_name)
+            if location == 1:
+                node.move(base_node,pos='left')
+            elif location == 2:
+                node.move(base_node,pos='right')
+            else:
+                node.move(base_node,pos='first-child')
+
+            return msg(request,'item moved')
+        else:
+            return msg(request,'cannnot move item')
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = MoveItemForm()
+
+        return render(request, 'move_item.html',
             {'form': form,
             })
 

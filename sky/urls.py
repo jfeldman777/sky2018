@@ -16,10 +16,12 @@ urlpatterns = [
     path('tree/<int:id>/', views.tree),
 
     path('add_item/<int:id>/<int:location>/', views.add_item),
+    path('move_item/<int:id>/', views.move_item),
+
     path('change_item/<int:id>/', views.change_item),
     path('change_txt/<int:id>/', views.change_txt),
 
-    path('change_figure/<int:id>/', views.change_figure),        
+    path('change_figure/<int:id>/', views.change_figure),
 
     path('upgrade/', views.upgrade),
     path('news/', views.news),

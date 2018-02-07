@@ -26,6 +26,9 @@
         <li>
           {{x}}
           {% if user.is_superuser %}
+          <a href="/move_item/{{x.id}}/"
+          title='move item' target="a1">
+   <span class="glyphicon glyphicon-plane"></span>
 
           <a href="/change_figure/{{x.id}}/"
           title='edit figure' target="a1">
