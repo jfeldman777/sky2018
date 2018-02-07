@@ -170,7 +170,6 @@ def add_item(request,id,location):
 
 def tree(request,id):
     node = MagicNode.get_first_root_node()
-    node = node.get_first_child()
     if id!=0:
         node = MagicNode.objects.get(id=id)
     annotated_list = MagicNode.get_annotated_list(parent=node)
