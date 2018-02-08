@@ -82,7 +82,13 @@
     {% if node.text %}
     {{node.text|linebreaks }}
     {% endif %}
-
+{% if node.post_nodes %}
+<h3>{% trans 'Next' %}</h3>
+{% for x in node.post_nodes %}
+<a href="/topic_by_name/{{x}}/">
+  {{x}}</a>|
+{% endfor %}
+{% endif %}
   <br>
     {% if node.video %}
 {% video node.video 'medium' %}

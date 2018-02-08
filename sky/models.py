@@ -67,6 +67,14 @@ class MagicNode(AL_Node):
 
             )
 
+    post_nodes = ArrayField(
+                models.TextField(blank=True),
+                blank = True,
+                null=True,
+                size=5,
+
+            )
+
     friends = ArrayField(
                 models.TextField(blank=True),
                 blank = True,

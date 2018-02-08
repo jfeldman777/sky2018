@@ -38,7 +38,7 @@ class AddItemForm(forms.Form):
 
 class MoveItemForm(forms.Form):
     base_name = forms.CharField(label=_('base item name'), max_length=100)
-    location = forms.ChoiceField(choices=((1,'left'),(2,'right'),(3,'down')))
+    location = forms.ChoiceField(choices=((1,'sibling before'),(2,'sibling after'),(3,'first child below')))
 
 class ChangeItemForm(ModelForm):
     class Meta:
@@ -48,7 +48,7 @@ class ChangeItemForm(ModelForm):
 class ChangeTxtForm(ModelForm):
     class Meta:
         model = MagicNode
-        fields = ['desc', 'text', 'videos','sites','pre_nodes','friends','sib_order', 'video','next']
+        fields = ['desc', 'text', 'videos','sites','pre_nodes','post_nodes','friends','sib_order', 'video','next']
 
 class ChangeFigureForm(ModelForm):
     class Meta:

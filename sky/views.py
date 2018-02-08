@@ -40,6 +40,8 @@ def change_txt(request,id):
             node.video = form.cleaned_data['video']
 
             node.pre_nodes = form.cleaned_data['pre_nodes']
+            node.post_nodes = form.cleaned_data['post_nodes']
+
             node.friends = form.cleaned_data['friends']
             node.sib_order = form.cleaned_data['sib_order']
 
@@ -58,6 +60,7 @@ def change_txt(request,id):
                 'videos':node.videos,
                 'video':node.video,
                 'pre_nodes':node.pre_nodes,
+                'post_nodes':node.post_nodes,
                 'friends':node.friends,
                 'sib_order':node.sib_order,
                 }
