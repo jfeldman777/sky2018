@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-06 15:09+0300\n"
+"POT-Creation-Date: 2018-02-12 17:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,6 +66,12 @@ msgstr "искать по названию"
 msgid "new item name"
 msgstr "новое имя"
 
+#: .\sky\forms.py:40
+#, fuzzy
+#| msgid "new name"
+msgid "base item name"
+msgstr "новое имя"
+
 #: .\sky\models.py:11
 msgid "Title"
 msgstr "Заголовок"
@@ -94,54 +100,41 @@ msgstr ""
 msgid "location"
 msgstr ""
 
-#: .\templates\area\admin.html:6 .\templates\area\index3.html:6
-#: .\templates\base1.html:66
-msgid "Tree of Knowledge"
-msgstr "Дерево Знаний"
-
-#: .\templates\area\admin.html:6 .\templates\area\index3.html:6
-msgid "draft"
-msgstr "черновик"
-
-#: .\templates\area\admin.html:10 .\templates\area\using.html:7
+#: .\templates\area\admin.html:7 .\templates\area\using.html:7
 msgid "My areas"
 msgstr "Мои области"
 
-#: .\templates\area\admin.html:41
+#: .\templates\area\admin.html:38
 msgid "Node selected"
 msgstr "Текущий узел"
 
-#: .\templates\area\admin.html:45
+#: .\templates\area\admin.html:42
 msgid "Create new area from the node"
 msgstr "Создать область из этого узла"
 
-#: .\templates\area\admin.html:49
+#: .\templates\area\admin.html:46
 msgid "Add node to selected area"
 msgstr "Использовать узел в описании области"
 
-#: .\templates\area\admin.html:57
+#: .\templates\area\admin.html:54
 msgid "Contents"
 msgstr "Содержание"
 
-#: .\templates\area\admin.html:62
+#: .\templates\area\admin.html:59
 msgid "Nodes"
 msgstr "Узлы"
 
-#: .\templates\area\admin.html:63
+#: .\templates\area\admin.html:60
 msgid "root of subtree"
 msgstr "корень поддерева"
 
-#: .\templates\area\admin.html:64
+#: .\templates\area\admin.html:61
 msgid "plus/minus"
 msgstr "плюс/минус"
 
-#: .\templates\area\admin.html:65
+#: .\templates\area\admin.html:62
 msgid "delete line"
 msgstr "удалить строку"
-
-#: .\templates\area\base3.html:41 .\templates\base1.html:48
-msgid "Home"
-msgstr "Домой"
 
 #: .\templates\area\base3.html:47
 msgid "Areas Admin"
@@ -150,6 +143,14 @@ msgstr "Управление областями"
 #: .\templates\area\base3.html:53
 msgid "Using Areas"
 msgstr "Использование областей"
+
+#: .\templates\area\index3.html:6
+msgid "Tree of Knowledge"
+msgstr "Дерево Знаний"
+
+#: .\templates\area\index3.html:6
+msgid "draft"
+msgstr "черновик"
 
 #: .\templates\area\index3.html:8
 msgid "Areas"
@@ -199,7 +200,7 @@ msgstr "Выйти"
 msgid "Change Password"
 msgstr "Изменить пароль"
 
-#: .\templates\base1.html:54 .\templates\index.html:18 .\templates\news.html:6
+#: .\templates\base1.html:54 .\templates\index.html:32 .\templates\news.html:6
 msgid "News"
 msgstr "Новости"
 
@@ -207,23 +208,19 @@ msgstr "Новости"
 msgid "Forum"
 msgstr "Форум"
 
-#: .\templates\base1.html:72
-msgid "Tree View"
-msgstr "Все Дерево"
-
-#: .\templates\base1.html:79
+#: .\templates\base1.html:81
 msgid "Topic Search"
 msgstr "Поиск по темам"
 
-#: .\templates\base1.html:84
+#: .\templates\base1.html:86
 msgid "Log of changes"
 msgstr "Журнал изменений"
 
-#: .\templates\base1.html:91
+#: .\templates\base1.html:93
 msgid "Interest Search"
 msgstr "Поиск по интересам"
 
-#: .\templates\base1.html:97
+#: .\templates\base1.html:99
 msgid "Area work"
 msgstr "Области"
 
@@ -243,19 +240,23 @@ msgstr "Поиск по экспертам"
 msgid "topics"
 msgstr "темы"
 
-#: .\templates\index.html:7
-msgid "last_visited"
-msgstr "последнее посещение"
+#: .\templates\index.html:9
+msgid "I don't know what to do"
+msgstr "Спасите-Помогите!"
 
-#: .\templates\index.html:11
-msgid "for new visitors"
-msgstr "Для новых посетителей"
+#: .\templates\index.html:15
+msgid "Welcome to Sky-School Learning Space!"
+msgstr "Скай-Скул"
 
-#: .\templates\index.html:13
-msgid "Welcome"
-msgstr "Добро пожаловать"
+#: .\templates\index.html:18
+msgid "Learn in Peace in your own Pace!"
+msgstr "входите, открыто"
 
-#: .\templates\index.html:27
+#: .\templates\index.html:25
+msgid "I know what to do"
+msgstr "Спасибо, я знаю что делать"
+
+#: .\templates\index.html:41
 msgid "More news"
 msgstr "Больше новостей"
 
@@ -317,6 +318,12 @@ msgstr "Зарегистрироваться"
 msgid "Restore Password"
 msgstr "Восстановить пароь"
 
+#: .\templates\move_item.html:7
+#, fuzzy
+#| msgid "Change item"
+msgid "Move item"
+msgstr "Изменить все данные"
+
 #: .\templates\msg.html:8
 msgid "OK, get me HOME"
 msgstr "Ладно, пошли домой"
@@ -333,7 +340,7 @@ msgstr "Навигатор"
 msgid "Create or edit item"
 msgstr "Создать или изменить параграф"
 
-#: .\templates\sea\more.html:6 .\templates\topic_tree.html:120
+#: .\templates\sea\more.html:6 .\templates\topic_tree.html:124
 msgid "More information"
 msgstr "Больше информации"
 
@@ -345,23 +352,23 @@ msgstr "Поиск по имени"
 msgid "Subtree below"
 msgstr "Поддерево тем"
 
-#: .\templates\topic_tree.html:65
+#: .\templates\topic_tree.html:63
 msgid "Pre-conditions"
 msgstr "Пред-условия"
 
-#: .\templates\topic_tree.html:75
+#: .\templates\topic_tree.html:73 .\templates\topic_tree.html:86
 msgid "Next"
 msgstr "Далее"
 
-#: .\templates\topic_tree.html:94
+#: .\templates\topic_tree.html:98
 msgid "Friends"
 msgstr "Друзья"
 
-#: .\templates\topic_tree.html:102
+#: .\templates\topic_tree.html:106
 msgid "Sites"
 msgstr "Сайты"
 
-#: .\templates\topic_tree.html:109
+#: .\templates\topic_tree.html:113
 msgid "Videos"
 msgstr "Видео"
 
@@ -372,6 +379,21 @@ msgstr "Поддерево"
 #: .\templates\upgrade.html:6
 msgid "Last 25 changes fron now backwards"
 msgstr "Последние 25 изменений от текущего момента назад"
+
+#~ msgid "Home"
+#~ msgstr "Домой"
+
+#~ msgid "Tree View"
+#~ msgstr "Все Дерево"
+
+#~ msgid "last_visited"
+#~ msgstr "последнее посещение"
+
+#~ msgid "for new visitors"
+#~ msgstr "Для новых посетителей"
+
+#~ msgid "Welcome"
+#~ msgstr "Добро пожаловать"
 
 #~ msgid "Change video"
 #~ msgstr "Изменить видео"
