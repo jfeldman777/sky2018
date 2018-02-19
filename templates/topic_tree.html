@@ -75,7 +75,7 @@
       {{node.next}}</a>
     {% endif %}
 
-    {% if node.figure %}
+    {% if node.figure and node.figure != 'False'%}<br>
     <img src="{{node.figure.url}}"  />
 <br>
 {% endif %}
