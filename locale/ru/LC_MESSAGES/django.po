@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-12 17:07+0300\n"
+"POT-Creation-Date: 2018-02-20 22:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,16 +61,12 @@ msgid "name to find"
 msgstr "искать по названию"
 
 #: .\sky\forms.py:36
-#, fuzzy
-#| msgid "new name"
 msgid "new item name"
 msgstr "новое имя"
 
 #: .\sky\forms.py:40
-#, fuzzy
-#| msgid "new name"
 msgid "base item name"
-msgstr "новое имя"
+msgstr "имя новой базы"
 
 #: .\sky\models.py:11
 msgid "Title"
@@ -80,25 +76,25 @@ msgstr "Заголовок"
 msgid "Content"
 msgstr "Содержание"
 
-#: .\sky\models.py:21 .\sky\models.py:37
+#: .\sky\models.py:21 .\sky\models.py:39
 msgid "Figure"
 msgstr "Рисунок"
 
-#: .\sky\models.py:39
+#: .\sky\models.py:41
 msgid "Text"
 msgstr "Текст"
 
 #: .\templates\add_item.html:7
 msgid "Create item"
-msgstr ""
+msgstr "Создать узел"
 
 #: .\templates\add_item.html:13
 msgid "old node"
-msgstr ""
+msgstr "старый узел"
 
 #: .\templates\add_item.html:13
 msgid "location"
-msgstr ""
+msgstr "место"
 
 #: .\templates\area\admin.html:7 .\templates\area\using.html:7
 msgid "My areas"
@@ -240,6 +236,10 @@ msgstr "Поиск по экспертам"
 msgid "topics"
 msgstr "темы"
 
+#: .\templates\index.html:5
+msgid "ready"
+msgstr "укомплектовано"
+
 #: .\templates\index.html:9
 msgid "I don't know what to do"
 msgstr "Спасите-Помогите!"
@@ -319,10 +319,8 @@ msgid "Restore Password"
 msgstr "Восстановить пароь"
 
 #: .\templates\move_item.html:7
-#, fuzzy
-#| msgid "Change item"
 msgid "Move item"
-msgstr "Изменить все данные"
+msgstr "сдвинуть узел"
 
 #: .\templates\msg.html:8
 msgid "OK, get me HOME"

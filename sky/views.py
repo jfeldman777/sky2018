@@ -20,6 +20,9 @@ from django.http import JsonResponse
 def total():
     return MagicNode.objects.count()
 
+def ready():
+    return MagicNode.objects.filter(is_ready = True).count()
+
 def topic_by_name(request, name):
     node = MagicNode.objects.get(desc = name)
     if node:
@@ -477,6 +480,7 @@ def index(request):
         last_visited = profile.node_last_visited
 
     n = total()
+    r = ready()
     nc = 0
     try:
         news = NewsRecord.objects.all()[:1].get()
@@ -488,6 +492,7 @@ def index(request):
         {'news':news,
         'more':(nc>1),
         'total':n,
+        'ready':r,
         'last_visited':last_visited,
         })
 
