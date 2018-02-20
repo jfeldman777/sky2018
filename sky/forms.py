@@ -48,7 +48,11 @@ class ChangeItemForm(ModelForm):
 class ChangeTxtForm(ModelForm):
     class Meta:
         model = MagicNode
-        fields = ['desc', 'text', 'videos','sites','pre_nodes','post_nodes','friends','sib_order', 'video','next']
+        fields = [
+        'desc', 'text', 'videos','sites',
+        'pre_nodes','post_nodes','friends',
+        'sib_order', 'video','next',
+        'is_ready']
 
 class ChangeFigureForm(ModelForm):
     class Meta:

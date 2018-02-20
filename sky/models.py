@@ -25,6 +25,8 @@ class NewsRecord(models.Model):
         ordering = ['-updated_at','-created_at',]
 
 class MagicNode(AL_Node):
+    is_ready = models.BooleanField(default = False)
+    updated_at = models.DateTimeField(auto_now = True)
     parent = models.ForeignKey('self',
                                related_name='children_set',
                                null=True,

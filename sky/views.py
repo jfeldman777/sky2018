@@ -32,6 +32,7 @@ def change_txt(request,id):
     if request.method == 'POST':
         form = ChangeTxtForm(request.POST)
         if form.is_valid():
+            node.is_ready = form.cleaned_data['is_ready']
             node.desc = form.cleaned_data['desc']
             node.text = form.cleaned_data['text']
             node.next = form.cleaned_data['next']
@@ -53,6 +54,7 @@ def change_txt(request,id):
     else:
         form = ChangeTxtForm(
             initial={
+                'is_ready':node.is_ready,
                 'next':node.next,
                 'desc':node.desc,
                 'text':node.text,
