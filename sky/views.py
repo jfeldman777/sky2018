@@ -24,10 +24,10 @@ def ready():
     return MagicNode.objects.filter(is_ready = True).count()
 
 def topic_by_name(request, name):
-    node = MagicNode.objects.get(desc = name)
-    if node:
+    try:
+        node = MagicNode.objects.get(desc = name)
         return topic_tree(request,node.id)
-    else:
+    except:
         return msg(request, 'node not found:'+name+'?')
 
 def change_txt(request,id):
