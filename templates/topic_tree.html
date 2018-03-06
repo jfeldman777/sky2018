@@ -53,7 +53,8 @@
       {% endfor %}
     </ul>
 <hr>
-    {% if not user.is_anonymous %}
+
+    {% if user.is_superuser %}
         {% include 'interest.html' %}
     {% endif %}
   </div>
@@ -80,7 +81,9 @@
 <br>
 {% endif %}
     {% if node.text %}
+    <p>
     {{node.text|linebreaks }}
+  </p>
     {% endif %}
 {% if node.post_nodes %}
 <h3>{% trans 'Next' %}</h3>

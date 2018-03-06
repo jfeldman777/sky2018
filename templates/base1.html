@@ -85,7 +85,7 @@
           </a>
         </li-->
 
-  {% if not user.is_anonymous %}
+        {% if user.is_superuser %}
   <li class="nav-item">
     <a class="nav-link" href="/interest_search/">
       {% trans 'Interest Search' %}
