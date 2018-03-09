@@ -25,7 +25,7 @@ def ready():
 
 def topic_by_name(request, name):
     try:
-        node = MagicNode.objects.get(desc = name)
+        node = MagicNode.objects.get(desc__iexact = name)
         return topic_tree(request,node.id)
     except:
         return msg(request, 'node not found:'+name+'?')
