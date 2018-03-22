@@ -20,11 +20,18 @@
               <a href="/topic_tree/{{x.id}}/">
             {{x}}
               </a>
+              {% if not x.is_ready %}
+              <span class="glyphicon glyphicon-cog" title="not ready yet"></span>
+              {% endif %}
           </li>
 
         {% else %}
         <li>
           {{x}}
+          {% if not x.is_ready %}
+          <span class="glyphicon glyphicon-cog" title="not ready yet"></span>
+          {% endif %}
+
           {% if user.is_superuser %}
           <a href="/move_item/{{x.id}}/"
           title='move item' target="a1">
@@ -45,6 +52,9 @@
                 <a href="/topic_tree/{{t.id}}/">
                 {{t}}
                 </a>
+                {% if not t.is_ready %}
+                <span class="glyphicon glyphicon-cog" title="not ready yet"></span>
+                {% endif %}
               </li>
               {% endfor %}
           </ul>
