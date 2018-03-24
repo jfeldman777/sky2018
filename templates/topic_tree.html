@@ -130,11 +130,19 @@
 {% endif %}
 {% endif %}
 
-{% if more_count > 0 or user.is_superuser %}
+{% if more_count > 0 %}
 
 <h3>
 <a href="/sea/more/{{node.id}}/" target="more">
 {% trans 'More information' %}
+</a>
+</h3>
+
+{% elif user.is_superuser %}
+
+<h3>
+<a href="/sea/more/{{node.id}}/" target="more">
+{% trans 'ADD More information' %}
 </a>
 </h3>
 
