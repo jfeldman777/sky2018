@@ -15,7 +15,7 @@
     {% if not item.is_ready %}
     <span class="glyphicon glyphicon-cog" title="not ready yet"></span>
     {% endif %}
-    {% if user.is_superuser %}
+    {% if user.is_superuser or item.owner == user %}
     <a href="/add_item/{{item.id}}/1/" title='add before' target="c1">
       <span class="glyphicon glyphicon-arrow-up">
       </span>

@@ -38,9 +38,10 @@ def edit(request,id):
             })
 
 def more(request,id):
+    node = MagicNode.objects.get(pk = id)
     qs = Boat.objects.filter(node_id=id).order_by('n_sib')
     return render(request,'sea/more.html',
-        {'boats':qs, 'id':id}
+        {'boats':qs, 'node':node}
         )
 
 def add(request,id):
@@ -63,5 +64,5 @@ def add(request,id):
                 )
 
         return render(request, 'sea/add.html',
-            {'form': form,
+            {'form': form,'node':node
             })

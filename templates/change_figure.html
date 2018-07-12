@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
 
-{% if user.is_superuser %}
+{% if user.is_superuser or node.owner == user %}
 <h2>
 {% trans 'Change figure' %}</h2>
 <form method="post" action='' enctype="multipart/form-data">

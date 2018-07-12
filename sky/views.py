@@ -72,7 +72,7 @@ def change_txt(request,id):
                 )
 
         return render(request, 'change_item.html',
-            {'form': form,
+            {'form': form, 'node':node
             })
 
 def change_item(request,id):
@@ -120,7 +120,7 @@ def change_item(request,id):
                 )
 
         return render(request, 'change_item.html',
-            {'form': form,
+            {'form': form,'node':node
             })
 
 def change_figure(request,id):
@@ -142,7 +142,7 @@ def change_figure(request,id):
                 )
 
         return render(request, 'change_figure.html',
-            {'form': form,
+            {'form': form, 'node':node
             })
 
 def move_item(request,id):
@@ -171,7 +171,7 @@ def move_item(request,id):
         form = MoveItemForm()
 
         return render(request, 'move_item.html',
-            {'form': form,
+            {'form': form, 'node':node
             })
 
 def add_item(request,id,location):
@@ -184,7 +184,7 @@ def add_item(request,id,location):
             name = form.cleaned_data['name']
             location = int(form.cleaned_data['location'])
 
-            new_node = MagicNode(desc=name)
+            new_node = MagicNode(desc=name,owner=request.user)
             if location == 1:
                 old_node.add_sibling('left',instance=new_node)
             elif location == 2:

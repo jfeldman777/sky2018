@@ -32,7 +32,7 @@
           <span class="glyphicon glyphicon-cog" title="not ready yet"></span>
           {% endif %}
 
-          {% if user.is_superuser %}
+          {% if user.is_superuser  or x.owner == user  %}
           <a href="/move_item/{{x.id}}/"
           title='move item' target="a1">
    <span class="glyphicon glyphicon-plane"></span>
@@ -138,7 +138,7 @@
 </a>
 </h3>
 
-{% elif user.is_superuser %}
+{% elif user.is_superuser or node.owner == user %}
 
 <h3>
 <a href="/sea/more/{{node.id}}/" target="more">
