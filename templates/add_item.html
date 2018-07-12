@@ -2,12 +2,15 @@
 {% load i18n %}
 {% block content %}
 
-{% if user.is_superuser %}
+{% if user.is_superuser or old_node.owner == user %}
 <h2>
 {% trans 'Create item' %}</h2>
 <form method="post" action=''>
   {% csrf_token %}
   {{ form }}
+{% if user.is_superuser %}
+  {{ form2 }}
+{% endif %}
   <input type="submit" value="Submit" />
 </form>
 {% trans 'old node' %}:{{old_node}}:{% trans 'location' %}:{{location}}

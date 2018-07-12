@@ -6,6 +6,9 @@ from django.utils.translation import ugettext as _
 from django.forms import ModelForm
 from .models import MagicNode
 
+class UnameForm(forms.Form):
+    uname = forms.SlugField(required = False)
+
 class InterestForm(forms.Form):
     i_like_the_topic = forms.BooleanField(label=_("I like the topic"))
     i_like_the_content = forms.BooleanField(label=_("I like the content"))

@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from .forms import SignUpForm, AddItemForm, ChangeFigureForm
+from .forms import SignUpForm, AddItemForm, ChangeFigureForm, UnameForm
 from .forms import ChangeItemForm, ChangeTxtForm, MoveItemForm
 from .models import NewsRecord, MagicNode, Interest, Profile
 from area.models import Subscription
@@ -176,15 +176,22 @@ def move_item(request,id):
 
 def add_item(request,id,location):
     old_node = MagicNode.objects.get(id=id)
+    owner = request.user
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = AddItemForm(request.POST)
+        form2 = UnameForm(request.POST)
+        if form2.is_valid():
+            uname = form2.cleaned_data['uname']
+            if uname == '':
+                uname = 'jacobfeldman'
+            owner = User.objects.get(username = uname)
         # check whether it's valid:
         if form.is_valid():
             name = form.cleaned_data['name']
             location = int(form.cleaned_data['location'])
 
-            new_node = MagicNode(desc=name,owner=request.user)
+            new_node = MagicNode(desc=name,owner=owner)
             if location == 1:
                 old_node.add_sibling('left',instance=new_node)
             elif location == 2:
@@ -198,9 +205,11 @@ def add_item(request,id,location):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = AddItemForm(initial={'location':location})
+        form2 = UnameForm()
 
         return render(request, 'add_item.html',
             {'form': form,
+            'form2':form2,
             'old_node':old_node,
             'location':location,
             })
