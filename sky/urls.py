@@ -25,5 +25,6 @@ urlpatterns = [
 
     path('upgrade/', views.upgrade),
     path('news/', views.news),
+    path('allabout/', views.allabout),    
     re_path('^', views.index, name='index'),
 ]

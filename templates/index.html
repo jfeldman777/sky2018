@@ -4,6 +4,7 @@
 
 {% block content %}
 {% trans 'topics' %}:{{total}}({% trans 'ready' %}:{{ready}})
+(<a href="/allabout/">= как это работает =</a>)
 {% if user.is_anonymous %}
 <br>
 {% video 'https://youtu.be/Z4UesaHZIPk' 'medium' %}
