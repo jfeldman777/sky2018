@@ -1,12 +1,16 @@
 {% extends "base1.html" %}
 {% load i18n %}
+{% load embed_video_tags %}
 
 {% block content %}
 {% trans 'topics' %}:{{total}}({% trans 'ready' %}:{{ready}})
-
-
-<a href="http://hbtjournal.com/club/new2.html" class="btn btn-info btn-lg btn-block">
-{% trans "I don't know what to do" %}
+{% if user.is_anonymous %}
+<br>
+{% video 'https://youtu.be/Z4UesaHZIPk' 'medium' %}
+{% endif %}
+<a href="http://eduber.herokuapp.com"
+ class="btn btn-info btn-lg btn-block">
+EdUber
 </a>
 
 <a href="/topic_tree/0/" class="btn btn-primary btn-lg btn-block">
