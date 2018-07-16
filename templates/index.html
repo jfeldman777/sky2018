@@ -4,7 +4,6 @@
 
 {% block content %}
 {% trans 'topics' %}:{{total}}({% trans 'ready' %}:{{ready}})
-(<a href="/allabout/">= как это работает =</a>)
 {% if user.is_anonymous %}
 <br>
 {% video 'https://youtu.be/Z4UesaHZIPk' 'medium' %}
@@ -27,7 +26,7 @@ EdUber
 {% if not user.is_anonymous %}
 <a href="/topic_tree/{{last_visited.id}}/" class="btn btn-default btn-lg btn-block"
 title="{{last_visited}}">
-{% trans "I know what to do" %}
+Начать с того места, где мы расстались
 </a>
 
 {% endif %}

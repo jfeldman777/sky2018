@@ -17,6 +17,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import NameForm
 from django.http import JsonResponse
 
+def about(request):
+    return render(request,'about.html')
+
 def allabout(request):
     return render(request,'allabout.html')
 

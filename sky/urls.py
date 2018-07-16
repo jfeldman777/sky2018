@@ -25,6 +25,7 @@ urlpatterns = [
 
     path('upgrade/', views.upgrade),
     path('news/', views.news),
-    path('allabout/', views.allabout),    
+    path('allabout/', views.allabout),
+    path('about/', views.about),  
     re_path('^', views.index, name='index'),
 ]
