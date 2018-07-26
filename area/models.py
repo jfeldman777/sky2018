@@ -26,7 +26,7 @@ class AreaPlus(models.Model):
 
 class Subscription(models.Model):
     area = models.ForeignKey(Area,on_delete=models.CASCADE)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, related_name = 'myuser')
 
     def __str__(self):
         a = Area.objects.get(id=self.area_id)

@@ -34,7 +34,10 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    path('sea/', include('sea.urls')), 
+
+    re_path('^newsletter/', include('newsletter.urls')),
+
+    path('sea/', include('sea.urls')),
     path('area/', include('area.urls')),
 
     re_path('^signup/$', core_views.signup, name='signup'),

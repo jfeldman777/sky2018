@@ -51,7 +51,8 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 # Application definition
-
+NEWSLETTER_CONFIRM_EMAIL = False
+SITE_ID = 1
 INSTALLED_APPS = [
     'sky.apps.SkyConfig',
     'area.apps.AreaConfig',
@@ -62,6 +63,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.sites',
+
+    #'imperavi',
+    'sorl.thumbnail',
+    'newsletter',
 
     'mptt',
     'haystack',
