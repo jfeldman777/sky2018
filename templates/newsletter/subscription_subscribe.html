@@ -8,6 +8,7 @@
     <h1>{% trans "Newsletter subscribe" %} {{ newsletter.title }}</h1>
 
     {% if error %}
+      {% comment %}
         <p>{% trans "Due to a technical error we were not able to submit your confirmation email. This could be because your email address is invalid." %}</p>
 
         <p>{% trans "If the error persists, please don't hesitate to contact us at the following email address:" %}
