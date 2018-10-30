@@ -9,7 +9,7 @@ Collectfast==0.6.0
 confusable-homoglyphs==2.0.2
 defusedxml==0.5.0
 dj-database-url==0.4.2
-Django==2.0
+Django==2.1.2
 django-allauth==0.34.0
 django-appconf==1.0.2
 django-blog-zinnia==0.19
@@ -42,7 +42,7 @@ gunicorn==19.7.1
 idna==2.6
 ldif3==3.1.1
 lxml==4.1.1
-markdown2==2.3.5
+markdown2==2.3.6
 mistune==0.8.3
 mots-vides==2015.5.11
 oauthlib==2.0.6
@@ -54,6 +54,7 @@ psycopg2==2.7.3.2
 py==1.5.2
 pycparser==2.18
 pyparsing==2.2.0
+PyPDF2==1.26.0
 python-card-me==0.9.3
 python-dateutil==2.6.1
 python-http-client==3.0.0
@@ -61,7 +62,8 @@ python3-openid==3.1.0
 pytz==2017.3
 redis==2.10.6
 regex==2017.12.9
-requests==2.18.4
+reportlab==3.5.6
+requests==2.20.0
 requests-oauthlib==0.8.0
 sendgrid==5.3.0
 six==1.11.0
